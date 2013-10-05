@@ -1,0 +1,87 @@
+body {
+  background: #336600; 
+  color: #FFFF00;
+  margin: 0; 
+  padding: 0;
+  font-family: Arial, Helvetica, Geneva, sans-serif;
+  font-size: 12pt;
+}
+
+div#logo {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  background: #336600 url("/images/style-3/logo.gif") no-repeat;
+  width: 464px;
+  height: 66px;
+  border: none;
+  float: none;
+}
+
+div#content {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  bottom: 86px;
+  padding: 6px;
+  background: #264D00;
+  border-top: #152900 inset thin;
+  border-bottom: #607848 inset thin;
+  border-left: #152900 inset thin;
+  border-right: #607848 inset thin;
+  text-align: left;
+	overflow: hidden;
+}
+
+.link {
+  color: #FFFF99;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.site-name {
+  color: #FFFF66;
+  font-weight: bold;
+  font-size: larger;
+}
+
+table.visual-list {
+	empty-cells: hide;
+	padding: 4px;
+}
+
+table.visual-list tr.visual-list-button-row > td {
+  padding-top: 2em;
+}
+
+table.visual-list tr.visual-list-item-row td.visual-list-item {
+  padding: 5px;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+
+table.visual-list tr.visual-list-item-row td.visual-list-item br {
+  line-height: 1px;
+}
+
+table.visual-list tr.visual-list-button-row input[type="submit"] {
+  color: #FFFF00;
+  font-weight: bold;
+  font-size: 11pt;
+  width: 8em;
+  padding: 2px;
+  background: #336600;
+  border-style: groove;
+  border-color: black;
+}
+
+table.visual-list tr.visual-list-button-row input[type="submit"]:hover {
+  color: #99FF00;
+}
+
+table.visual-list tr.visual-list-button-row input[type="submit"]:active {
+  background: #264D00;
+  border-style: inset;
+  border-color: #264D00;
+}

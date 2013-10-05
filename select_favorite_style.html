@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <meta name="author" content="Rolland Crunk" />
+    <meta name="keywords" content="crunk, css, rails" />
+    <meta name="description" content="Allows the selection of a favorite website theme." />
+    <meta name="robots" content="all" />
+    <title>Select A Favorite Crunk.net Style</title>
+    <script type="text/javascript" src="/js/style_manager.js"></script>
+    
+    <!--
+      The scripting on this page does two things:
+        1. Allows for the clearing of an already set radio button.
+        2. Changes the text and label for submit button to submit or continue as 
+           appropriate depending on if radio selection is made or not made respectively.
+           
+        The idea being, the user is not strictly required to select a favorite style,
+        and if he/she has selected a favorite in the past, they can decide that maybe
+        they don't really still have a favorite.
+    -->
+    <script type="text/javascript">
+      // <![CDATA[
+        var styleManager;
+        
+        /* configures the submit button with appropriate display value and label and
+        ** sets the currentlyChecked dynamic attribute according to checked attribute
+        */
+        function configure(form) {
+          var favorite = styleManager.getFavoriteStyle();
+          var radios = form.favorite_style;
+          
+          var hasFavorite = false;
+          if (favorite != null) {
+            for (var i = 0; i < radios.length; ++i) {
+              radio = radios[i];
+              if (radio.value == favorite) {
+                radio.currentlyChecked = radio.checked = true;
+                hasFavorite |= radio.checked;
+              }
+            }
+          }
+            
+          if (hasFavorite) {
+            form.submit.value = 'Submit';
+            form.submit.title = 'Click to select your favorite style';
+          }
+          else {
+            form.submit.value = 'Continue';
+            form.submit.title = 'Click to continue without making a selection';
+          }
+        }
+        
+        /* event handler for radio's onclick
+        ** toggles the checked state of the radio button and calls configure()
+        */
+        function toggle(e) {
+          // the monkey work on the next two lines solves IE's non-standard event handling
+          e = e || window.event;
+          radio = e.target ? e.target : e.srcElement;
+          
+          radio.checked = !radio.currentlyChecked;
+          radio.currentlyChecked = radio.checked;
+
+          if (radio.checked) {
+            radio.form.submit.value = 'Submit';
+            radio.form.submit.title = 'Click to select your favorite style';
+          }
+          else {
+            radio.form.submit.value = 'Continue';
+            radio.form.submit.title = 'Click to continue without making a selection';
+          }
+        }
+        
+        /* onload event handler;
+        ** sets event handler for individual elements and calls configure()
+        */
+        window.onload = function() {
+          styleManager = new StyleManager();
+          styleManager.initialize();
+          
+          var form = document.forms[0];
+          var radios = form.favorite_style;
+          
+          for (var i = 0; i < radios.length; ++i) {
+            radios[i].onclick = function(e) {
+              toggle(e);
+            }
+          }
+          
+          configure(form);
+          form.onsubmit = function(e) {
+            var radios = this.favorite_style;
+            var value = null;
+            for (var i = 0; i < radios.length; ++i) {
+              radio = radios[i];
+              if (radio.checked) {
+                value = radio.value;
+                break;
+              }
+            }
+            
+            if (value != null) {
+              styleManager.setFavoriteStyle(radio.value);
+            }
+            else styleManager.clearFavoriteStyle();
+            
+            location.href = location.href.toString().replace(/select_favorite_style.html/, '');
+            return false;
+          }
+        }
+        
+      // ]]>
+    </script>  
+  </head>
+  <body>
+    <div id="logo"></div>
+    <div id="content">
+      <form>
+        <table class="visual-list">
+          <tr class="visual-list-header-row">
+            <th colspan="4">
+              Choose your favorite <span class="site-name">crunk.net</span> website style
+            </th>
+          </tr>
+          <tr class="visual-list-item-row">
+            <td class="visual-list-item">
+              <img src="/images/style-0/thumbnail.jpg" height="125" width="160"/>
+              <br />
+              <input type="radio" id="theme_0-radio" name="favorite_style" value="0"/><label for="theme_0-radio">Erozay</label>
+            </td>
+            <td class="visual-list-item">
+              <img src="/images/style-1/thumbnail.jpg" height="125" width="160"/>
+              <br />
+              <input type="radio" id="theme_1-radio" name="favorite_style" value="1"/><label for="theme_1-radio">Oneway</label>
+            </td>
+            <td class="visual-list-item">
+              <img src="/images/style-2/thumbnail.jpg" height="125" width="160"/>
+              <br />
+              <input type="radio" id="theme_2-radio" name="favorite_style" value="2"/><label for="theme_2-radio">Otway</label>
+            </td>
+            <td class="visual-list-item">
+              <img src="/images/style-3/thumbnail.jpg" height="125" width="160"/>
+              <br />
+              <input type="radio" id="theme_3-radio" name="favorite_style" value="3"/><label for="theme_3-radio">Eethray</label>
+            </td>
+          </tr>
+          <tr class="visual-list-item-row">
+            <td class="visual-list-item">
+              <img src="/images/style-4/thumbnail.jpg" height="125" width="160"/>
+              <br />
+              <input type="radio" id="theme_4-radio" name="favorite_style" value="4"/><label for="theme_4-radio">Ourfay</label>
+            </td>
+            <td class="visual-list-item">
+              <img src="/images/style-5/thumbnail.jpg" height="125" width="160"/>
+              <br />
+              <input type="radio" id="theme_5-radio" name="favorite_style" value="5"/><label for="theme_5-radio">Ivefay</label>
+            </td>
+            <td class="visual-list-item">
+              <img src="/images/style-6/thumbnail.jpg" height="125" width="160"/>
+              <br />
+              <input type="radio" id="theme_6-radio" name="favorite_style" value="6"/><label for="theme_6-radio">Ixsay</label>
+            </td>
+            <td class="visual-list-item">
+              <img src="/images/style-7/thumbnail.jpg" height="125" width="160"/>
+              <br />
+              <input type="radio" id="theme_7-radio" name="favorite_style" value="7"/><label for="theme_7-radio">Evensay</label>
+            </td>
+          </tr>
+          <tr class="visual-list-button-row">
+            <td colspan="4">
+              <input type="submit" name="submit" value="Continue"/>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+</html>
