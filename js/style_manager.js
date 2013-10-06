@@ -10,11 +10,11 @@ function StyleManager() {
     var fromCookie = this.getCookie(FAVORITE_STYLE_COOKIE_NAME);
     if (fromCookie != null) {
       currentStyle = favoriteStyle = new Number(fromCookie);
-    } else {
+    } 
+    else {
       fromCookie = this.getCookie(CURRENT_STYLE_COOKIE_NAME);
       if (fromCookie != null) {
         currentStyle = new Number(fromCookie);
-        
       }
     }
     
