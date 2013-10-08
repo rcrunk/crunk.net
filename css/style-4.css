@@ -11,7 +11,7 @@ div#logo {
   position: absolute;
   top: 4px;
   right: 10px;
-  background: #996600 url("/images/style-4/logo.gif") no-repeat;
+  background: #996600 url("../images/style-4/logo.gif") no-repeat;
   width: 292px;
   height: 61px;
   border: none;

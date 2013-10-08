@@ -15,7 +15,7 @@ div#logo {
   bottom: 4px;
   left: 50%;
   margin-left: -344px;
-  background: #000099 url("/images/style-7/logo.gif") no-repeat;
+  background: #000099 url("../images/style-7/logo.gif") no-repeat;
   border: none;
   z-index: 0;
 }
@@ -65,7 +65,7 @@ table.visual-list tr.visual-list-button-row > td {
 }
 
 table.visual-list tr.visual-list-button-row input[type="submit"] {
-  background: transparent url("/images/style-7/button.gif") no-repeat;
+  background: transparent url("../images/style-7/button.gif") no-repeat;
   color: #0099FF;
   font-size: 11pt;
   font-weight: bold;
@@ -79,5 +79,5 @@ table.visual-list tr.visual-list-button-row input[type="submit"]:hover {
 }
 
 table.visual-list tr.visual-list-button-row input[type="submit"]:active {
-  background: transparent url("/images/style-7/button_active.gif") no-repeat;
+  background: transparent url("../images/style-7/button_active.gif") no-repeat;
 }

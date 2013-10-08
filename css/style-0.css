@@ -11,7 +11,7 @@ div#logo {
   position: absolute;
   top: 4px;
   right: 4px;
-  background: #9933CC url("/images/style-0/logo.gif") no-repeat;
+  background: #9933CC url("../images/style-0/logo.gif") no-repeat;
   width: 161px;
   height: 50px;
   border: none;
@@ -87,8 +87,8 @@ table.visual-list tr.visual-list-button-row input[type="submit"] {
   color: black;
   width: 84px;
   border-color: white;
-	border-style: solid;
-	border-width: thin;
+  border-style: solid;
+  border-width: thin;
   font-size: 14px;
   font-weight: bold;
   text-transform: lowercase;

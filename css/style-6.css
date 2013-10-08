@@ -14,7 +14,7 @@ div#logo
 	height: 51px;
 	margin: 0px auto;
 	text-align: center;
-	background: #FFCC00 url("/images/style-6/logo.gif") no-repeat; 
+	background: #FFCC00 url("../images/style-6/logo.gif") no-repeat;
 }
 
 div#content {

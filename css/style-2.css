@@ -12,7 +12,7 @@ div#logo {
   position: absolute;
   top: 1em;
   left: 49%;
-  background: black url("/images/style-2/logo.gif") no-repeat;
+  background: black url("../images/style-2/logo.gif") no-repeat;
   width: 28px;
   height: 277px;
   border: none;
@@ -63,7 +63,7 @@ table.visual-list tr.visual-list-button-row > td {
 }
 
 table.visual-list tr.visual-list-button-row input[type="submit"] {
-  background: black url("/images/style-2/button.gif") no-repeat;
+  background: black url("../images/style-2/button.gif") no-repeat;
   color: #CCCCCC;
   font-size: 11pt;
   font-weight: bold;
