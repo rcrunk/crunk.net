@@ -6,21 +6,22 @@
     <meta name="author" content="Mr. Crunk" />
     <meta name="description" content="Off the beaten path." />
     <meta name="robots" content="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Crunk.net</title>
     <script type="text/javascript" src="js/style_manager.js"></script>
     <script type="text/javascript">
-      var styleManager
+      var styleManager;
       window.onload = function() {
-        styleManager = new StyleManager()
-        styleManager.initialize()
-      }
+        styleManager = new StyleManager();
+        styleManager.initialize();
+      };
     </script>
 
   <link rel="Shortcut Icon" type="image/x-icon" href="http://www.crunk.net/favicon.ico" />
   </head>
-  <body>
+  <body data-ng-app="crunk.net">
     <div id="logo"></div>
-    <div id="content">
+    <div id="content" data-ng-controller="StyleManager">
       <p>Welcome to <span class="site-name">crunk.net</span>!</p>
       <p>You have certainly wandered off the beaten path to find yourself here.</p>
       <p>There really isn't anything here to see.</p>

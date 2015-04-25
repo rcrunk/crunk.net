@@ -1,33 +1,32 @@
 body {
-  background: #FFCC00; 
+  background: #FFCC00;
   color: black;
-  margin: 0; 
+  margin: 0;
   padding: 0;
   font-family: Georgia, sans-serif;
   font-size: 12pt;
-	text-align: center;
+  text-align: center;
 }
 
-div#logo 
-{
-	width:248px;
-	height: 51px;
-	margin: 0px auto;
-	text-align: center;
-	background: #FFCC00 url("../images/style-6/logo.gif") no-repeat;
+div#logo {
+  width: 248px;
+  height: 51px;
+  margin: 0 auto;
+  text-align: center;
+  background: #FFCC00 url("../images/style-6/logo.gif") no-repeat;
 }
 
 div#content {
   position: static;
-  top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   text-align: center;
 
-	border-top-color: red;
-	border-top-style: solid;
-	border-top-width: medium;
+  border-top-color: red;
+  border-top-style: solid;
+  border-top-width: medium;
 }
 
 .link {
@@ -37,26 +36,26 @@ div#content {
 }
 
 .site-name {
-	font-weight: bold;
-	font-size: larger;
-	color: #FF0000;
+  font-weight: bold;
+  font-size: larger;
+  color: #FF0000;
 }
 
 table.visual-list {
-	empty-cells: hide;
-	padding: 4px;
-	margin: 0 auto;
+  empty-cells: hide;
+  padding: 4px;
+  margin: 0 auto;
 }
 
 table.visual-list tr.visual-list-header-row th {
   padding-bottom: 1em;
   border-bottom: black groove thin;
 }
-	
+
 table.visual-list tr.visual-list-item-row td.visual-list-item {
-	vertical-align: middle;
-	margin: auto;
-	padding-top: 4px;
+  vertical-align: middle;
+  margin: auto;
+  padding-top: 4px;
 }
 
 table.visual-list tr.visual-list-item-row td.visual-list-item br {
@@ -78,7 +77,7 @@ table.visual-list tr.visual-list-button-row input[type="submit"] {
   border-color: red;
   border-style: solid;
   border-width: thin;
-}  
+}
 
 table.visual-list tr.visual-list-button-row input[type="submit"]:hover {
   color: red;

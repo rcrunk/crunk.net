@@ -21,32 +21,32 @@
         they don't really still have a favorite.
     -->
     <script type="text/javascript">
-      var styleManager
+      var styleManager;
 
       /* configures the submit button with appropriate display value and label and
        ** sets the currentlyChecked dynamic attribute according to checked attribute
        */
       function configure(form) {
-        var favorite = styleManager.getFavoriteStyle()
-        var radios = form.favorite_style
-        var hasFavorite = false
+        var favorite = styleManager.getFavoriteStyle();
+        var radios = form.favorite_style;
+        var hasFavorite = false;
         if (favorite != null) {
           for (var i = 0; i < radios.length; ++i) {
-            radio = radios[i];
+            var radio = radios[i];
             if (radio.value == favorite) {
-              radio.currentlyChecked = radio.checked = true
+              radio.currentlyChecked = radio.checked = true;
               hasFavorite |= radio.checked;
             }
           }
         }
 
         if (hasFavorite) {
-          form.submit.value = 'Submit'
-          form.submit.title = 'Click to select your favorite style'
+          form.submit.value = 'Submit';
+          form.submit.title = 'Click to select your favorite style';
         }
         else {
-          form.submit.value = 'Continue'
-          form.submit.title = 'Click to continue without making a selection'
+          form.submit.value = 'Continue';
+          form.submit.title = 'Click to continue without making a selection';
         }
       }
 
@@ -55,19 +55,19 @@
        */
       function toggle(e) {
         // the monkey work on the next two lines solves IE's non-standard event handling
-        e = e || window.event
-        radio = e.target ? e.target : e.srcElement
+        e = e || window.event;
+        var radio = e.target ? e.target : e.srcElement;
 
-        radio.checked = !radio.currentlyChecked
-        radio.currentlyChecked = radio.checked
+        radio.checked = !radio.currentlyChecked;
+        radio.currentlyChecked = radio.checked;
 
         if (radio.checked) {
-          radio.form.submit.value = 'Submit'
-          radio.form.submit.title = 'Click to select your favorite style'
+          radio.form.submit.value = 'Submit';
+          radio.form.submit.title = 'Click to select your favorite style';
         }
         else {
-          radio.form.submit.value = 'Continue'
-          radio.form.submit.title = 'Click to continue without making a selection'
+          radio.form.submit.value = 'Continue';
+          radio.form.submit.title = 'Click to continue without making a selection';
         }
       }
 
@@ -75,37 +75,37 @@
        ** sets event handler for individual elements and calls configure()
        */
       window.onload = function() {
-        styleManager = new StyleManager()
-        styleManager.initialize()
+        styleManager = new StyleManager();
+        styleManager.initialize();
 
-        var form = document.forms[0]
-        var radios = form.favorite_style
+        var form = document.forms[0];
+        var radios = form.favorite_style;
 
         for (var i = 0; i < radios.length; ++i) {
           radios[i].onclick = function(e) {
-            toggle(e)
+            toggle(e);
           }
         }
 
         configure(form);
-        form.onsubmit = function(e) {
-          var radios = this.favorite_style
-          var value = null
+        form.onsubmit = function() {
+          var radios = this.favorite_style;
+          var value = null;
           for (var i = 0; i < radios.length; ++i) {
-            radio = radios[i]
+            var radio = radios[i];
             if (radio.checked) {
-              value = radio.value
-              break
+              value = radio.value;
+              break;
             }
           }
 
           if (value != null) {
-            styleManager.setFavoriteStyle(radio.value)
+            styleManager.setFavoriteStyle(radio.value);
           }
-          else styleManager.clearFavoriteStyle()
+          else styleManager.clearFavoriteStyle();
 
-          location.href = location.href.toString().replace(/select_favorite_style.html/, '')
-          return false
+          location.href = location.href.toString().replace(/select_favorite_style.html/, '');
+          return false;
         }
       }
     </script>  
@@ -137,7 +137,7 @@
               <input type="radio" id="theme_2-radio" name="favorite_style" value="2"/><label for="theme_2-radio">Otway</label>
             </td>
             <td class="visual-list-item">
-              <img src="images/style-3/thumbnail.jpg" height="125" width="160"/>
+              <img src="images/style-3/thumbnail.jpg" height="126" width="160"/>
               <br />
               <input type="radio" id="theme_3-radio" name="favorite_style" value="3"/><label for="theme_3-radio">Eethray</label>
             </td>
