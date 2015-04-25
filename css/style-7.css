@@ -10,14 +10,15 @@ body {
 
 div#logo {
   position: absolute;
-  width: 688px;
-  height: 148px; 
-  bottom: 4px;
-  left: 50%;
-  margin-left: -344px;
-  background: #000099 url("../images/style-7/logo.gif") no-repeat;
+  width: 100%;
+  height: 100%;
+  max-height: 148px;
+  bottom: 1%;
+  margin: 0 auto;
   border: none;
   z-index: 0;
+  background: #000099 url("../images/style-7/logo.gif") no-repeat center;
+  background-size: 80%;
 }
 
 div#content {
