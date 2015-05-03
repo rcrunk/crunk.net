@@ -1,70 +1,19 @@
 body {
   background: #000099;
   color: #0099FF;
-  margin: 0; 
-  padding: 0;
-  width: 100%;
-  font-family: Helvetica, sans-serif;
-  font-size: 12pt;
+  transition: color 2s;
 }
-
-div#logo {
-  position: absolute;
-  width: 100%;
-  height: 15%;
-  bottom: .5rem;
-  margin: 0 auto;
-  border: none;
-  z-index: 0;
-  background: #000099 url("../images/style-7/logo.gif") no-repeat center;
-  background-size: contain;
-}
-
 div#content {
+  margin: 4% 8%;
+  padding: 2%;
+  width: 84%;
   position: absolute;
-  right: 8%;
-  left: 8%;
-  top: 3em;
+  border: 1px dashed;
+  border-radius: 1rem;
   text-align: center;
-  margin: auto 0;
-  border-style: dashed;
-  border-width: thin;
-  padding: 4px;
+  transition: all 2s;
 }
-
-.link {
-  color: #0099FF;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.site-name {
-  font-weight: bold;
-  font-style: italic;
-  font-size: larger;
-}
-
-table.visual-list {
-	empty-cells: hide;
-	padding: 4px;
-	margin: 0 auto;
-}
-
-table.visual-list tr.visual-list-item-row td.visual-list-item {
-  vertical-align: middle;
-  margin: 0 auto;
-  padding-bottom: 1em;
-}
-
-table.visual-list tr.visual-list-item-row td.visual-list-item br {
-  line-height: 1px;
-}
-
-table.visual-list tr.visual-list-button-row > td {
-  padding-top: 2em;
-}
-
-table.visual-list tr.visual-list-button-row input[type="submit"] {
+div#content input[type="submit"] {
   background: transparent url("../images/style-7/button.gif") no-repeat;
   color: #0099FF;
   font-size: 11pt;
@@ -72,12 +21,35 @@ table.visual-list tr.visual-list-button-row input[type="submit"] {
   width: 100px;
   height: 25px;
   border: none;
-}  
-
-table.visual-list tr.visual-list-button-row input[type="submit"]:hover {
+}
+div#content input[type="submit"]:hover {
   color: #33CCFF;
 }
-
-table.visual-list tr.visual-list-button-row input[type="submit"]:active {
+div#content input[type="submit"]:active {
   background: transparent url("../images/style-7/button_active.gif") no-repeat;
+}
+div#logo {
+  position: fixed;
+  width: 84%;
+  height: 15%;
+  bottom: .5rem;
+  margin: 0 8%;
+  border: none;
+  z-index: 0;
+  background: #000099 url("../images/style-7/logo.gif") no-repeat center;
+  background-size: contain;
+  transition: all 3s;
+}
+div#logo span.logo-text {
+  display: none;
+}
+.link {
+  color: #0099FF;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.site-name {
+  font-weight: bold;
+  font-style: italic;
+  font-size: larger;
 }

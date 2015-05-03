@@ -1,77 +1,68 @@
 body {
-  background: #CCCCCC; 
+  background: #CCCCCC;
   color: #333333;
-  margin: 0; 
+  margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+  transition: all 2s;
 }
-
 div#logo {
   position: absolute;
   top: 5em;
   left: 2em;
-  background: #CCCCCC url("../images/style-1/logo.gif") no-repeat;
+  background: url("../images/style-1/logo.gif") no-repeat;
   width: 150px;
   height: 45px;
   border: none;
   float: right;
+  transition: all 3s;
 }
-
 div#content {
   position: absolute;
   text-align: right;
   right: 2em;
   top: 3em;
   text-transform: lowercase;
+  transition: all 2s;
 }
-
 .link {
   color: #333333;
   text-decoration: underline;
   cursor: pointer;
 }
-
 .site-name {
-	font-weight: bold;
-	text-transform: uppercase;
+  font-weight: bold;
+  text-transform: uppercase;
 }
-
 .site-name:before {
   content: no-open-quote;
 }
-
 .site-name:after {
   content: no-close-quote;
 }
-
 table.visual-list {
   position: relative;
   top: 12px;
   empty-cells: hide;
   padding-right: 0;
 }
-
 table.visual-list tr.visual-list-header-row th {
   text-align: right;
   font-weight: normal;
   padding-bottom: 3em;
 }
-
 table.visual-list tr.visual-list-item-row td.visual-list-item {
   vertical-align: middle;
   margin: auto;
   padding-bottom: 1em;
 }
-
 table.visual-list tr.visual-list-item-row td.visual-list-item br {
   line-height: 1px;
 }
-
 table.visual-list tr.visual-list-button-row > td {
   padding-top: 2em;
 }
-
 table.visual-list tr.visual-list-button-row input[type="submit"] {
   background: #333333;
   width: 6em;
@@ -80,13 +71,11 @@ table.visual-list tr.visual-list-button-row input[type="submit"] {
   font-weight: bold;
   border: solid 2px #9933CC;
   text-transform: lowercase;
-}  
-
+}
 table.visual-list tr.visual-list-button-row input[type="submit"]:hover {
   background: #9933CC;
   border: solid 2px #333333;
 }
-
 table.visual-list tr.visual-list-button-row input[type="submit"]:active {
   color: #CCCCCC;
 }

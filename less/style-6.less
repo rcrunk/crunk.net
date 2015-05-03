@@ -9,6 +9,7 @@ body {
   transition: all 2s;
   transition: background 0s;
 }
+
 div#logo {
   width: 248px;
   height: 51px;
@@ -16,10 +17,12 @@ div#logo {
   text-align: center;
   background: url("../images/style-6/logo.gif") no-repeat;
   transition: all 3s;
+
+  span.logo-text {
+    display: none;
+  }
 }
-div#logo span.logo-text {
-  display: none;
-}
+
 div#content {
   position: static;
   top: 0;
@@ -27,32 +30,38 @@ div#content {
   bottom: 0;
   right: 0;
   text-align: center;
+
   border-top: medium solid red;
   transition: all 2s;
+
+  input[type="submit"] {
+    background: #FFCC00;
+    color: black;
+    font-size: 11pt;
+    font-weight: normal;
+    width: 102px;
+    height: 24px;
+    border: thin solid red;
+
+    &:hover {
+      color: red;
+      border-color: black;
+    }
+
+    &:active {
+      background: black;
+      color: #FFCC00;
+      border-color: black;
+    }
+  }
 }
-div#content input[type="submit"] {
-  background: #FFCC00;
-  color: black;
-  font-size: 11pt;
-  font-weight: normal;
-  width: 102px;
-  height: 24px;
-  border: thin solid red;
-}
-div#content input[type="submit"]:hover {
-  color: red;
-  border-color: black;
-}
-div#content input[type="submit"]:active {
-  background: black;
-  color: #FFCC00;
-  border-color: black;
-}
+
 .link {
   color: black;
   text-decoration: underline;
   cursor: pointer;
 }
+
 .site-name {
   font-weight: bold;
   font-size: larger;

@@ -8,6 +8,7 @@ body {
   text-align: center;
   transition: all 2s;
 }
+
 div#logo {
   position: absolute;
   top: 1em;
@@ -18,6 +19,7 @@ div#logo {
   border: none;
   transition: all 3s;
 }
+
 div#content {
   position: relative;
   top: 285px;
@@ -25,30 +27,44 @@ div#content {
   text-align: center;
   transition: all 2s;
 }
+
 .link {
   color: white;
   text-decoration: underline;
   cursor: pointer;
 }
+
 table.visual-list {
   empty-cells: hide;
   padding: 4px;
   margin: 0 auto;
 }
+
+table.visual-list > tr.visual-list-header-row {
+
+}
+
 table.visual-list > tr.visual-list-header-row > th {
   padding-bottom: 1em;
   border-bottom: black groove thin;
 }
+
+table.visual-list > tr.visual-list-item-row > td {
+}
+
 table.visual-list > tr.visual-list-item-row > td.visual-list-item {
   vertical-align: middle;
   margin: auto;
 }
+
 table.visual-list tr.visual-list-item-row td.visual-list-item br {
   line-height: 1px;
 }
+
 table.visual-list tr.visual-list-button-row > td {
   padding-top: 2em;
 }
+
 table.visual-list tr.visual-list-button-row input[type="submit"] {
   background: black url("../images/style-2/button.gif") no-repeat;
   color: #CCCCCC;
@@ -58,9 +74,11 @@ table.visual-list tr.visual-list-button-row input[type="submit"] {
   height: 24px;
   border-style: none;
 }
+
 table.visual-list tr.visual-list-button-row input[type="submit"]:hover {
   color: white;
 }
+
 table.visual-list tr.visual-list-button-row input[type="submit"]:active {
   color: #666666;
 }

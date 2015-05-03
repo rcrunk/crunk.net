@@ -7,6 +7,7 @@ body {
   font-size: 11pt;
   transition: all 2s;
 }
+
 div#logo {
   position: absolute;
   top: 4px;
@@ -18,6 +19,7 @@ div#logo {
   float: none;
   transition: all 2s;
 }
+
 div#content {
   position: absolute;
   top: 70px;
@@ -34,37 +36,49 @@ div#content {
   overflow: auto;
   transition: all 2s;
 }
+
 .link {
   color: #CCCC33;
   text-decoration: underline;
   cursor: pointer;
 }
+
 .site-name {
   font-weight: bold;
   font-style: italic;
   font-size: larger;
 }
+
 table.visual-list {
   empty-cells: hide;
   width: 100%;
 }
+
+table.visual-list tr.visual-list-header-row {
+
+}
+
 table.visual-list tr.visual-list-header-row > th {
   padding-top: 12px;
   padding-bottom: 1em;
   font-weight: normal;
   text-align: left;
 }
+
 table.visual-list tr.visual-list-item-row > td.visual-list-item {
   vertical-align: middle;
   margin: 0 auto;
   padding-bottom: 4px;
 }
+
 table.visual-list tr.visual-list-item-row td.visual-list-item br {
   line-height: 1px;
 }
+
 table.visual-list tr.visual-list-button-row > td {
   padding-top: 1em;
 }
+
 table.visual-list tr.visual-list-button-row input[type="submit"] {
   background: #996600;
   color: #333333;
@@ -76,10 +90,13 @@ table.visual-list tr.visual-list-button-row input[type="submit"] {
   font-size: 11pt;
   font-weight: bold;
   text-transform: lowercase;
+
 }
+
 table.visual-list tr.visual-list-button-row input[type="submit"]:hover {
   color: #CCCC33;
 }
+
 table.visual-list tr.visual-list-button-row input[type="submit"]:active {
   background: #333333;
   color: #996600;

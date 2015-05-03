@@ -4,7 +4,7 @@ function StyleManager() {
   var MAX_STYLES = 8;
   var CURRENT_STYLE_COOKIE_NAME = "currentStyle";
   var FAVORITE_STYLE_COOKIE_NAME = "favoriteStyle";
-  var currentStyle = MAX_STYLES - 1;
+  var currentStyle = MAX_STYLES - 3;
   var favoriteStyle = null;
   var clicks = 0;
 

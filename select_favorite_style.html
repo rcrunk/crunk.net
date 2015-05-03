@@ -4,10 +4,12 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
     <meta name="author" content="Mr. Crunk" />
-    <meta name="keywords" content="crunk, css, rails" />
+    <meta name="keywords" content="crunk, css" />
     <meta name="description" content="Allows the selection of a favorite website theme." />
     <meta name="robots" content="all" />
     <title>Select A Favorite Crunk.net Style</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Bree+Serif">
     <script type="text/javascript" src="js/style_manager.js"></script>
     
     <!--
@@ -111,66 +113,85 @@
     </script>  
   </head>
   <body>
-    <div id="logo"></div>
-    <div id="content">
-      <form>
-        <table class="visual-list">
-          <tr class="visual-list-header-row">
-            <th colspan="4">
-              Choose your favorite <span class="site-name">crunk.net</span> website style
-            </th>
-          </tr>
-          <tr class="visual-list-item-row">
-            <td class="visual-list-item">
-              <img src="images/style-0/thumbnail.jpg" height="125" width="160"/>
-              <br />
-              <input type="radio" id="theme_0-radio" name="favorite_style" value="0"/><label for="theme_0-radio">Erozay</label>
-            </td>
-            <td class="visual-list-item">
-              <img src="images/style-1/thumbnail.jpg" height="125" width="160"/>
-              <br />
-              <input type="radio" id="theme_1-radio" name="favorite_style" value="1"/><label for="theme_1-radio">Oneway</label>
-            </td>
-            <td class="visual-list-item">
-              <img src="images/style-2/thumbnail.jpg" height="125" width="160"/>
-              <br />
-              <input type="radio" id="theme_2-radio" name="favorite_style" value="2"/><label for="theme_2-radio">Otway</label>
-            </td>
-            <td class="visual-list-item">
-              <img src="images/style-3/thumbnail.jpg" height="126" width="160"/>
-              <br />
-              <input type="radio" id="theme_3-radio" name="favorite_style" value="3"/><label for="theme_3-radio">Eethray</label>
-            </td>
-          </tr>
-          <tr class="visual-list-item-row">
-            <td class="visual-list-item">
-              <img src="images/style-4/thumbnail.jpg" height="125" width="160"/>
-              <br />
-              <input type="radio" id="theme_4-radio" name="favorite_style" value="4"/><label for="theme_4-radio">Ourfay</label>
-            </td>
-            <td class="visual-list-item">
-              <img src="images/style-5/thumbnail.jpg" height="125" width="160"/>
-              <br />
-              <input type="radio" id="theme_5-radio" name="favorite_style" value="5"/><label for="theme_5-radio">Ivefay</label>
-            </td>
-            <td class="visual-list-item">
-              <img src="images/style-6/thumbnail.jpg" height="125" width="160"/>
-              <br />
-              <input type="radio" id="theme_6-radio" name="favorite_style" value="6"/><label for="theme_6-radio">Ixsay</label>
-            </td>
-            <td class="visual-list-item">
-              <img src="images/style-7/thumbnail.jpg" height="125" width="160"/>
-              <br />
-              <input type="radio" id="theme_7-radio" name="favorite_style" value="7"/><label for="theme_7-radio">Evensay</label>
-            </td>
-          </tr>
-          <tr class="visual-list-button-row">
-            <td colspan="4">
-              <input type="submit" name="submit" value="Continue"/>
-            </td>
-          </tr>
-        </table>
-      </form>
+    <div class="wrapper">
+      <div id="logo">
+        <span class="logo-text">Crunk<span class="period">.</span>net</span>
+      </div>
+
+      <div id="content" class="inner cover">
+        <form>
+          <div class="container">
+            <div class="row">
+              <div class="lead col-xs-12">
+                Choose your favorite <span class="site-name">crunk.net</span> website style
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="choice">
+                  <img class="img-responsive" src="images/style-0/page.jpg"/>
+                  <input type="radio" id="theme_0-radio" name="favorite_style" value="0"/>
+                  <label for="theme_0-radio">Erozay</label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="choice">
+                  <img class="img-responsive" src="images/style-1/page.jpg"/>
+                  <input type="radio" id="theme_1-radio" name="favorite_style" value="1"/>
+                  <label for="theme_1-radio">Oneway</label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="choice">
+                  <img class="img-responsive" src="images/style-2/page.jpg"/>
+                  <input type="radio" id="theme_2-radio" name="favorite_style" value="2"/>
+                  <label for="theme_2-radio">Otway</label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="choice">
+                  <img class="img-responsive" src="images/style-3/page.jpg"/>
+                  <input type="radio" id="theme_3-radio" name="favorite_style" value="3"/>
+                  <label for="theme_3-radio">Eethray</label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="choice">
+                  <img class="img-responsive" src="images/style-4/page.jpg"/>
+                  <input type="radio" id="theme_4-radio" name="favorite_style" value="4"/>
+                  <label for="theme_4-radio">Ourfay</label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="choice">
+                  <img class="img-responsive" src="images/style-5/page.jpg"/>
+                  <input type="radio" id="theme_5-radio" name="favorite_style" value="5"/>
+                  <label for="theme_5-radio">Ivefay</label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="choice">
+                  <img class="img-responsive" src="images/style-6/page.jpg"/>
+                  <input type="radio" id="theme_6-radio" name="favorite_style" value="6"/>
+                  <label for="theme_6-radio">Ixsay</label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="choice">
+                  <img class="img-responsive" src="images/style-7/page.jpg"/>
+                  <input type="radio" id="theme_7-radio" name="favorite_style" value="7"/>
+                  <label for="theme_7-radio">Evensay</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 center-block">
+                <input type="submit" name="submit" value="Continue"/>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
