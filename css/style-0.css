@@ -67,6 +67,9 @@ div#content input[type="submit"]:hover {
 div#content input[type="submit"]:active {
   color: gray;
 }
+div#content input[type="submit"]:focus {
+  outline: 0;
+}
 .link {
   color: #333333;
   text-decoration: underline;
