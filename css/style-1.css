@@ -66,6 +66,9 @@ body.style-selector div#content {
 div#content .choice {
   padding-bottom: 3rem;
 }
+div#content .choice img {
+  cursor: pointer;
+}
 div#content .choice input[type="radio"]:hover + label {
   color: #c3c;
 }

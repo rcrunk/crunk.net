@@ -70,6 +70,9 @@ div#content {
 div#content .choice {
   padding-bottom: 2%;
 }
+div#content .choice img {
+  cursor: pointer;
+}
 div#content .choice input[type="radio"]:hover + label {
   color: #9f0;
 }

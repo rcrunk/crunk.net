@@ -38,6 +38,9 @@ div#content {
 div#content .choice {
   padding-bottom: 3rem;
 }
+div#content .choice img {
+  cursor: pointer;
+}
 div#content .choice input[type="radio"] + label {
   color: #ccc;
 }
