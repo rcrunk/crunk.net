@@ -1,3 +1,5 @@
+@import "mixins/vendor.less";
+
 body {
   background: #336600;
   color: #fd0;
@@ -96,8 +98,8 @@ div#content {
 
 .link {
   color: #fd0;
-  text-decoration: underline;
   cursor: pointer;
+  border-bottom: 1px solid;
 }
 
 .site-name {
@@ -107,26 +109,50 @@ div#content {
 }
 
 input[type="submit"] {
-  color: #ff0;
-  font-weight: bold;
-  font-size: 11pt;
-  width: 100%;
-  padding: 2px;
-  background: #264D00;
-  border-radius: .5rem;
-  border: none;
-  box-shadow: 1px 1px 0 rgba(0,0,0,0.8), -1px -1px 0 rgba(255,255,255,0.3);
+   color: #ff0;
+   font-weight: bold;
+   font-size: 11pt;
+   width: 100%;
+   padding: 2px;
+   background: #264D00;
+   border-radius: .5rem;
+   border: none;
+   box-shadow: 1px 1px 0 rgba(0,0,0,0.8), -1px -1px 0 rgba(255,255,255,0.3);
 
-  &:hover {
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.8), -2px -2px 0 rgba(255,255,255,0.3);
-  }
+   &:hover {
+     box-shadow: 2px 2px 0 rgba(0,0,0,0.8), -2px -2px 0 rgba(255,255,255,0.3);
+   }
 
-  &:active {
-    text-shadow: 1px 1px 1rem #9f0;
-    box-shadow: 1px 1px 0 rgba(255,255,255,0.3), -1px -1px 0 rgba(0,0,0,0.8);
-  }
+   &:active {
+     text-shadow: 1px 1px 1rem #9f0;
+     box-shadow: 1px 1px 0 rgba(255,255,255,0.3), -1px -1px 0 rgba(0,0,0,0.8);
+   }
 
-  &:focus {
-    outline: 0;
-  }
+   &:focus {
+     outline: 0;
+   }
+ }
+
+span.next-theme {
+  .animate(underline, 2500ms, 4, 4s, ease-in);
+}
+
+@-ms-keyframes underline {
+  from { border-bottom: none; }
+  to { border-bottom: 1px solid; }
+}
+
+@-moz-keyframes underline {
+  from { border-bottom: none; }
+  to { border-bottom: 1px solid; }
+}
+
+@-webkit-keyframes underline {
+  from { border-bottom: none; }
+  to { border-bottom: 1px solid; }
+}
+
+@keyframes underline {
+  from { border-bottom: none; }
+  to { border-bottom: 1px solid; }
 }

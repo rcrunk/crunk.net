@@ -114,3 +114,91 @@ input[type="submit"]:active {
 input[type="submit"]:focus {
   outline: 0;
 }
+span.next-theme {
+  -webkit-animation-name: rainbow;
+  -webkit-animation-duration: 2500ms;
+  -webkit-animation-iteration-count: 5;
+  -webkit-animation-delay: 6s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-direction: normal;
+  -moz-animation-name: rainbow;
+  -moz-animation-duration: 2500ms;
+  -moz-animation-iteration-count: 5;
+  -moz-animation-delay: 6s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-direction: normal;
+  animation-name: rainbow;
+  animation-duration: 2500ms;
+  animation-iteration-count: 5;
+  animation-delay: 6s;
+  animation-timing-function: linear;
+  animation-direction: normal;
+}
+@-ms-keyframes rainbow {
+  0% {
+    color: #555;
+  }
+  25% {
+    color: #f00;
+  }
+  50% {
+    color: #93c;
+  }
+  75% {
+    color: #00f;
+  }
+  100% {
+    color: #333;
+  }
+}
+@-moz-keyframes rainbow {
+  0% {
+    color: #555;
+  }
+  25% {
+    color: #f00;
+  }
+  50% {
+    color: #93c;
+  }
+  75% {
+    color: #00f;
+  }
+  100% {
+    color: #333;
+  }
+}
+@-webkit-keyframes rainbow {
+  0% {
+    color: #555;
+  }
+  25% {
+    color: #f00;
+  }
+  50% {
+    color: #93c;
+  }
+  75% {
+    color: #00f;
+  }
+  100% {
+    color: #333;
+  }
+}
+@keyframes rainbow {
+  0% {
+    color: #555;
+  }
+  25% {
+    color: #f00;
+  }
+  50% {
+    color: #93c;
+  }
+  75% {
+    color: #00f;
+  }
+  100% {
+    color: #333;
+  }
+}

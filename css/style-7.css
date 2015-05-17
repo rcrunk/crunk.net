@@ -1,50 +1,96 @@
 body {
-  background: #000099;
-  color: #0099FF;
+  background: #009;
+  color: #09f;
   transition: color 2s;
+  font-family: cursive;
+}
+div#logo {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  bottom: .5rem;
+  margin: 0 auto;
+  border: none;
+  z-index: 0;
+  transition: all 2s;
+}
+div#logo span.logo-text {
+  font-family: 'Nothing You Could Do', cursive;
+  font-size: 12rem;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 1rem;
+  color: #006;
+}
+@media (max-width: 624px) {
+  div#logo span.logo-text {
+    font-size: 8rem;
+    letter-spacing: .75rem;
+  }
+}
+@media (max-width: 400px) {
+  div#logo span.logo-text {
+    font-size: 6rem;
+    letter-spacing: .5rem;
+  }
 }
 div#content {
   margin: 4% 8%;
   padding: 2%;
   width: 84%;
   position: absolute;
-  border: 1px dashed;
+  border: 1px dashed #09f;
   border-radius: 1rem;
   text-align: center;
-  transition: all 2s;
+  transition: all 1s;
+}
+div#content .container {
+  width: 100%;
+}
+div#content .choice {
+  padding-bottom: 2.5%;
+}
+div#content .choice input[type="radio"] + label {
+  font-size: 12pt;
+}
+div#content .choice input[type="radio"]:hover + label {
+  color: #fff;
+}
+div#content .choice input[type="radio"]:checked + label {
+  color: #fff;
+  text-shadow: -1px -1px 1px #0099ff;
+}
+div#content .choice img.img-responsive {
+  display: initial;
+}
+div#content .choice label {
+  padding: 4px;
+}
+div#content .row:last-child {
+  margin-top: 1rem;
+  padding: 2rem 0;
 }
 div#content input[type="submit"] {
-  background: transparent url("../images/style-7/button.gif") no-repeat;
-  color: #0099FF;
+  color: #09f;
+  background: #009;
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.8);
   font-size: 11pt;
   font-weight: bold;
-  width: 100px;
-  height: 25px;
-  border: none;
+  border: 1px solid transparent;
+  border-radius: -0.5rem;
+  padding: .24rem 4rem;
 }
 div#content input[type="submit"]:hover {
-  color: #33CCFF;
+  color: #3cf;
 }
 div#content input[type="submit"]:active {
-  background: transparent url("../images/style-7/button_active.gif") no-repeat;
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 255, 255, 0.8);
 }
-div#logo {
-  position: fixed;
-  width: 84%;
-  height: 15%;
-  bottom: .5rem;
-  margin: 0 8%;
-  border: none;
-  z-index: 0;
-  background: #000099 url("../images/style-7/logo.gif") no-repeat center;
-  background-size: contain;
-  transition: all 3s;
-}
-div#logo span.logo-text {
-  display: none;
+div#content input[type="submit"]:focus {
+  outline: 0;
 }
 .link {
-  color: #0099FF;
+  color: #09f;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -52,4 +98,14 @@ div#logo span.logo-text {
   font-weight: bold;
   font-style: italic;
   font-size: larger;
+}
+.site-name {
+  font-weight: bold;
+  font-size: larger;
+  text-shadow: 1px 1px 1px #006;
+}
+.site-name + .exclamation {
+  font-size: large;
+  font-style: italic;
+  text-shadow: 1px 1px 1px #006;
 }

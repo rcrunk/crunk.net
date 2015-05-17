@@ -90,8 +90,8 @@ div#content .row:last-child {
 }
 .link {
   color: #fd0;
-  text-decoration: underline;
   cursor: pointer;
+  border-bottom: 1px solid;
 }
 .site-name {
   color: #fd3;
@@ -118,4 +118,56 @@ input[type="submit"]:active {
 }
 input[type="submit"]:focus {
   outline: 0;
+}
+span.next-theme {
+  -webkit-animation-name: underline;
+  -webkit-animation-duration: 2500ms;
+  -webkit-animation-iteration-count: 4;
+  -webkit-animation-delay: 4s;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-direction: normal;
+  -moz-animation-name: underline;
+  -moz-animation-duration: 2500ms;
+  -moz-animation-iteration-count: 4;
+  -moz-animation-delay: 4s;
+  -moz-animation-timing-function: ease-in;
+  -moz-animation-direction: normal;
+  animation-name: underline;
+  animation-duration: 2500ms;
+  animation-iteration-count: 4;
+  animation-delay: 4s;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+}
+@-ms-keyframes underline {
+  from {
+    border-bottom: none;
+  }
+  to {
+    border-bottom: 1px solid;
+  }
+}
+@-moz-keyframes underline {
+  from {
+    border-bottom: none;
+  }
+  to {
+    border-bottom: 1px solid;
+  }
+}
+@-webkit-keyframes underline {
+  from {
+    border-bottom: none;
+  }
+  to {
+    border-bottom: 1px solid;
+  }
+}
+@keyframes underline {
+  from {
+    border-bottom: none;
+  }
+  to {
+    border-bottom: 1px solid;
+  }
 }
