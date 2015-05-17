@@ -50,6 +50,12 @@ class StyleManager {
     return this.favoriteStyle;
   }
 
+  public setCurrentStyle(newStyleIndex: number): void {
+    StyleManager.clearStyle(this.currentStyle);
+    StyleManager.loadStyle(newStyleIndex);
+    this.currentStyle = newStyleIndex;
+  }
+
   public setFavoriteStyle(favorite: number): void {
     this.favoriteStyle = favorite;
     StyleManager.setCookie(StyleManager.FAVORITE_STYLE_COOKIE_NAME, this.favoriteStyle);

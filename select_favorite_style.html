@@ -66,6 +66,7 @@
         radio.currentlyChecked = radio.checked;
 
         if (radio.checked) {
+          styleManager.setCurrentStyle(radio.value);
           radio.form.submit.value = 'Submit';
           radio.form.submit.title = 'Click to select your favorite style';
         }

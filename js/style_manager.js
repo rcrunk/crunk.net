@@ -36,6 +36,11 @@ var StyleManager = (function () {
         }
         return this.favoriteStyle;
     };
+    StyleManager.prototype.setCurrentStyle = function (newStyleIndex) {
+        StyleManager.clearStyle(this.currentStyle);
+        StyleManager.loadStyle(newStyleIndex);
+        this.currentStyle = newStyleIndex;
+    };
     StyleManager.prototype.setFavoriteStyle = function (favorite) {
         this.favoriteStyle = favorite;
         StyleManager.setCookie(StyleManager.FAVORITE_STYLE_COOKIE_NAME, this.favoriteStyle);
