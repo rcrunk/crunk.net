@@ -49,7 +49,7 @@ div#logo span.logo-text {
   }
 }
 div#content {
-  min-height: calc(88vh);
+  min-height: calc(88vh + 0);
   margin: 1%;
   padding: .5% 1%;
   background: #264D00;
