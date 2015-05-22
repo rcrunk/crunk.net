@@ -74,7 +74,7 @@ class Chooser {
     var radio = <HTMLInputElement> document.querySelector("#theme_" + value + "-radio");
     if (radio) {
       radio.checked = !radio.checked;
-      this.toggleRadio(radio, radio.form);
+      this.toggleRadio(radio);
     }
   }
 
