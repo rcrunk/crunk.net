@@ -7,41 +7,23 @@
     <meta name="description" content="Off the beaten path. Demonstration of responsive themes using CSS." />
     <meta name="robots" content="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Welcome to Crunk.net</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="http://www.crunk.net/favicon.ico" />
     <link rel='stylesheet' href='css/bootstrap.min.css'>
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Bree+Serif|Dosis:600|Signika:700|Audiowide|Geostar|Nothing+You+Could+Do'>
-    <script type="text/javascript" src="js/style_manager.js"></script>
-    <script type="text/javascript">
-      var styleManager;
-      window.onload = function() {
-        styleManager = new StyleManager();
-      };
-    </script>
-
-  <link rel="Shortcut Icon" type="image/x-icon" href="http://www.crunk.net/favicon.ico" />
-  </head>
-  <body data-ng-app="crunk.net">
-
-    <div class="wrapper">
-      <div id="logo">
-        <span class="logo-text">Crunk<span class="period">.</span>net</span>
-      </div>
-
-      <div class="inner cover">
-
-        <div id="content" data-ng-controller="StyleManager">
-          <p class="lead">Welcome to <span class="site-name">crunk.net</span><span class="exclamation">!</span></p>
-          <p>You have certainly wandered off the beaten path to find yourself here.</p>
-          <p>There really isn't anything here to see.</p>
-          <p>Perhaps at some point later, there will be.<br />
-            But, if you have visited here before and read such alluding to future content, you might be skeptical.</p>
-          <p>I don't blame you.</p>
-          <p>At least you can click <span class="link next-theme" title="Fun with stylesheets" onclick="styleManager.nextStyle()">here</span> to see things differently...</p>
-        </div>
-      </div>
-    </div>
 
     <script src="js/jquery.min.js" type="application/javascript"></script>
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.87/traceur-runtime.js" ></script>
+    <script src="https://jspm.io/system@0.16.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-alpha.22/angular2.dev.js"></script>
+  </head>
+  <body>
+    <themer/>
+    <script>
+      System.import('js/style_manager');
+      System.import('js/themer');
+    </script>
   </body>
 </html>

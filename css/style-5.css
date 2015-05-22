@@ -12,6 +12,9 @@ body {
   transition: all 1s;
   display: flex;
 }
+themer {
+  flex: 1;
+}
 .wrapper {
   flex: 1;
 }
