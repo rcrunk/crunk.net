@@ -1,0 +1,26 @@
+{
+  "name": "crunk.net",
+  "version": "3.0.0",
+  "authors": [
+    "Rolland Crunk <rcrunk@yahoo.com>"
+  ],
+  "description": "Crunk.net website.",
+  "keywords": [
+    "Angular2",
+    "Typescript",
+    "Bootstrap",
+    "Themes"
+  ],
+  "license": "MIT",
+  "homepage": "crunk.net",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}

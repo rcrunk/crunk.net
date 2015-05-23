@@ -16,8 +16,8 @@
 /// <reference path="typings/angular2/angular2.d.ts" />
 /// <reference path="style_manager.ts" />
 
-import {Component, View, bootstrap} from 'angular2/angular2';
 import Selector = StyleManager.Selector;
+import {Component, View, bootstrap} from 'angular2/angular2';
 
 @Component({ selector: 'chooser' })
 @View({ templateUrl: 'choices.html' })
