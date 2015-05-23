@@ -15,9 +15,9 @@
 'use strict';
 
 var gulp = require('gulp');
-var mainBowerFiles = require('main-bower-files');
-
 var plugins = require('gulp-load-plugins')();
+
+var mainBowerFiles = require('main-bower-files');
 
 gulp.task('bower-js', function() {
   return gulp.src(mainBowerFiles())
@@ -47,7 +47,6 @@ gulp.task('css', function() {
     .pipe(gulp.dest('src/css'));
 });
 
-
 var tsc = require('gulp-typescript');
 var tscOptions = {
   target: 'ES5',
@@ -71,3 +70,18 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['bower', 'html', 'css', 'js']);
+
+
+gulp.task('scripts', function() {
+  return gulp.src('src/js/**/*.js')
+      .pipe(plugins.uglify())
+      .pipe(plugins.print())
+      .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('styles', function() {
+  return gulp.src('src/css/**/*.css')
+      .pipe(plugins.minifyCss())
+      .pipe(plugins.print())
+      .pipe(gulp.dest('dist/css'));
+});
