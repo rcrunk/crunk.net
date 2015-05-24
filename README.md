@@ -21,7 +21,9 @@ a different style sheet on each "here" click.  Somewhere circa 2011, I switched 
 found that my RoR's implementation didn't work on the latest version. At this point I ditched RoR (as it was overkill
 anyway), and reimplemented using JavaScript which allowed the site to be completely static.
 
-Site undergoing major surgery to make responsive across mobile, tablet, and desktops, as well as a technological update.
+Fast forward to today (2015), CSS and client side technologies have advanced and mobile devices have become ubiquitous
+and crunk.net is back in the stone ages. This is about to change, the site undergoing major surgery to make responsive 
+across mobile, tablet, and desktops, as well as a technological update. 
 
 
 Mr. Crunk
