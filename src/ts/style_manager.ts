@@ -122,7 +122,7 @@ module StyleManager {
     }
 
     private static setCookie(cookieName: string, value: number, expirationMinutes?: number): void {
-      var expirationDate = null;
+      var expirationDate: Date = null;
       if (expirationMinutes) {
         expirationDate = new Date();
         expirationDate.setMinutes(expirationDate.getMinutes() + expirationMinutes);
