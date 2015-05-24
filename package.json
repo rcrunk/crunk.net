@@ -25,6 +25,7 @@
   "devDependencies": {
     "browserify": "^10.2.1",
     "gulp": "^3.8.11",
+    "gulp-cachebust": "0.0.5",
     "gulp-clean": "^0.3.1",
     "gulp-filter": "^2.0.2",
     "gulp-imagemin": "^2.2.1",
@@ -36,6 +37,7 @@
     "gulp-uglify": "^1.2.0",
     "main-bower-files": "^2.8.0",
     "minimist": "^1.1.1",
+    "run-sequence": "^1.1.0",
     "typescript": "1.5.0-beta",
     "vinyl-source-stream": "^1.1.0"
   },
