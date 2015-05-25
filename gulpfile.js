@@ -19,18 +19,20 @@ var plugins = require('gulp-load-plugins')();
 
 var mainBowerFiles = require('main-bower-files');
 
+var dart = true;
+
 gulp.task('bower-js', function() {
   return gulp.src(mainBowerFiles())
     .pipe(plugins.filter('*.js'))
     .pipe(plugins.print())
-    .pipe(gulp.dest('src/js'));
+    .pipe(gulp.dest(dart ? 'src/web/js' : 'src/js'));
 });
 
 gulp.task('bower-css', function() {
   return gulp.src(mainBowerFiles())
     .pipe(plugins.filter('*.css'))
     .pipe(plugins.print())
-    .pipe(gulp.dest('src/css'));
+    .pipe(gulp.dest(dart ? 'src/web/css' : 'src/css'));
 });
 
 gulp.task('bower', ['bower-js', 'bower-css']);
@@ -41,7 +43,7 @@ gulp.task('css', function() {
   return gulp.src('src/less/*.less')
     .pipe(plugins.print())
     .pipe(plugins.less())
-    .pipe(gulp.dest('src/css'));
+    .pipe(gulp.dest(dart ? 'src/web/css' : 'src/css'));
 });
 
 var tsc = require('gulp-typescript');
@@ -53,31 +55,40 @@ var tscOptions = {
 };
 
 gulp.task('tsc', function () {
-  var tscResult = gulp.src('src/ts/*.ts')
-      .pipe(plugins.print())
-      .pipe(tsc(tscOptions));
-  return tscResult.js.pipe(gulp.dest('src/js/'));
+  if (!dart) {
+    var tscResult = gulp.src('src/ts/*.ts')
+        .pipe(plugins.print())
+        .pipe(tsc(tscOptions));
+    return tscResult.js.pipe(gulp.dest('src/js/'));
+  }
 });
 
 gulp.task('js', ['tsc']);
 
 gulp.task('watch', function() {
   gulp.watch('src/less/*.less', ['css']);
-  gulp.watch('src/ts/*.ts', ['js']);
+  if (!dart) gulp.watch('src/ts/*.ts', ['js']);
 });
-
-gulp.task('default', ['bower', 'html', 'css', 'js']);
 
 var CacheBuster = require('gulp-cachebust');
 var cachebust = new CacheBuster();
 
 gulp.task('images', function() {
+  if (dart) {
+    return gulp.src('src/images/**/*.{jpg,gif}')
+        .pipe(plugins.imagemin())
+        .pipe(plugins.print())
+        .pipe(gulp.dest('src/web/images'));
+  }
+
   return gulp.src('src/images/**/*.{jpg,gif}')
-    .pipe(plugins.imagemin())
-    .pipe(cachebust.resources())
-    .pipe(plugins.print())
-    .pipe(gulp.dest('dist/images'));
+      .pipe(plugins.imagemin())
+      .pipe(cachebust.resources())
+      .pipe(plugins.print())
+      .pipe(gulp.dest('dist/images'));
 });
+
+gulp.task('default', ['bower', 'html', 'css', 'js', 'images']);
 
 gulp.task('styles', function() {
   return gulp.src('src/css/**/*.css')
@@ -106,4 +117,8 @@ gulp.task('content', function() {
 var runSequence = require('run-sequence');
 gulp.task('dist', function(done) {
   runSequence('default', 'images', 'styles', 'scripts', 'content', done);
+});
+
+gulp.task('dart', function() {
+
 });
