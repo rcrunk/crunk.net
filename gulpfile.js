@@ -30,7 +30,7 @@ gulp.task('bower-js', function() {
 
 gulp.task('bower-css', function() {
   return gulp.src(mainBowerFiles())
-    .pipe(plugins.filter('*.css'))
+    .pipe(plugins.filter(['*.css', '*.css.map']))
     .pipe(plugins.print())
     .pipe(gulp.dest(dart ? 'src/web/css' : 'src/css'));
 });
@@ -75,7 +75,7 @@ var cachebust = new CacheBuster();
 
 gulp.task('images', function() {
   if (dart) {
-    return gulp.src('src/images/**/*.{jpg,gif}')
+    return gulp.src('src/images/**/*.{png,gif}')
         .pipe(plugins.imagemin())
         .pipe(plugins.print())
         .pipe(gulp.dest('src/web/images'));

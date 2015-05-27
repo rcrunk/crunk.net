@@ -5,13 +5,14 @@
 import 'dart:html';
 import 'package:angular/angular.dart';
 import 'package:range/range.dart';
+import 'package:logging/logging.dart';
 
 class StyleManager {
   static const num MAX_STYLES = 8;
-  static const String CURRENT_STYLE_COOKIE_NAME = "currentStyle";
-  static const String FAVORITE_STYLE_COOKIE_NAME = "favoriteStyle";
-  static const String URL_PATTERN = r"/([a-z_]+\.html)$";
-  static RegExp URL_REGEXP = new RegExp(URL_PATTERN);
+  static const String CURRENT_STYLE_KEY = "currentStyle";
+  static const String FAVORITE_STYLE_KEY = "favoriteStyle";
+
+  static final Logger log = new Logger('StyleManager');
 
   num favoriteStyle = null;
   num currentStyle = 0;
@@ -21,15 +22,12 @@ class StyleManager {
   Map<String, String> local = window.localStorage;
 
   StyleManager(this._router) {
-    if (local.containsKey(FAVORITE_STYLE_COOKIE_NAME)) {
-      currentStyle = favoriteStyle = num.parse(local[FAVORITE_STYLE_COOKIE_NAME]);
+    if (local.containsKey(FAVORITE_STYLE_KEY)) {
+      currentStyle = favoriteStyle = num.parse(local[FAVORITE_STYLE_KEY]);
     }
-    else if (local.containsKey(CURRENT_STYLE_COOKIE_NAME)) {
-      currentStyle = num.parse(local[CURRENT_STYLE_COOKIE_NAME]);
+    else if (local.containsKey(CURRENT_STYLE_KEY)) {
+      currentStyle = num.parse(local[CURRENT_STYLE_KEY]);
     }
-
-    // whack this in any case
-    local.remove(CURRENT_STYLE_COOKIE_NAME);
 
     clearDynamicStyles(currentStyle);
     loadStyle(currentStyle);
@@ -37,7 +35,7 @@ class StyleManager {
 
   bool nextStyle() {
     if (++clickCount == MAX_STYLES) {
-      local[CURRENT_STYLE_COOKIE_NAME] = ((currentStyle + 1) % MAX_STYLES).toString();
+      local[CURRENT_STYLE_KEY] = ((currentStyle + 1) % MAX_STYLES).toString();
       _router.go('choose', {}, replace: true);
       return true;
     }
@@ -52,8 +50,8 @@ class StyleManager {
   }
 
   num getFavoriteStyleIndex() {
-    if (favoriteStyle == null && local.containsKey(FAVORITE_STYLE_COOKIE_NAME)) {
-      favoriteStyle = num.parse(local[FAVORITE_STYLE_COOKIE_NAME]);
+    if (favoriteStyle == null && local.containsKey(FAVORITE_STYLE_KEY)) {
+      favoriteStyle = num.parse(local[FAVORITE_STYLE_KEY]);
     }
     return favoriteStyle;
   }
@@ -65,17 +63,18 @@ class StyleManager {
   }
 
   void setFavoriteStyleIndex(num favoriteStyleIndex) {
-    local[FAVORITE_STYLE_COOKIE_NAME] = (this.favoriteStyle = favoriteStyleIndex).toString();
+    local[FAVORITE_STYLE_KEY] = (this.favoriteStyle = favoriteStyleIndex).toString();
   }
 
   void clearFavoriteStyle() {
     this.favoriteStyle = null;
-    local.remove(FAVORITE_STYLE_COOKIE_NAME);
+    local.remove(FAVORITE_STYLE_KEY);
   }
 
   static void clearStyle(num styleIndex)  {
     var filename = makeStyleSheetHref(styleIndex);
     var link = querySelector("link[href~='" + filename + "']");
+    log.fine("clearStyle(${styleIndex}): link: ${(link != null).toString()}");
     if (link != null) link.remove();
   }
 
@@ -93,10 +92,10 @@ class StyleManager {
     }
   }
 
-  static void clearDynamicStyles(num styleIndex) {
-    var dynamicStyles = querySelectorAll("link[href*='css/style-*.css']");
-    for (var index in range(0, (MAX_STYLES - 1))) {
-      if (index != styleIndex) {
+  static void clearDynamicStyles(num preserveStyleIndex) {
+    log.fine("clearDynamicStyles(${preserveStyleIndex.toString()})");
+    for (var index in range(0, MAX_STYLES)) {
+      if (index != preserveStyleIndex) {
         clearStyle(index);
       }
     }
