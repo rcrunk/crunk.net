@@ -12,20 +12,22 @@ import 'package:crunk_net/style_manager.dart';
 @Component(selector: 'chooser', templateUrl: 'choices.html', useShadowDom: false)
 class ChoiceController implements ShadowRootAware {
   final Logger log = new Logger('ChoiceController');
-  static const String FORM_ID = "#style-choice-form";
+  static const String FORM_SELECTOR = "#style-choice-form";
+  static const String FORM_SUBMIT_SELECTOR = "input[type='submit']";
+  static const String FAVORITE_STYLE_RADIOS_SELECTOR = "input[type='radio'][name='favorite_style']";
 
   StyleManager _styleManager;
   Router _router;
 
-  num favorite = null;
+  int favorite = null;
 
   ChoiceController(this._router) {
-    _styleManager = new StyleManager(_router);
+    _styleManager = new StyleManager();
     favorite = _styleManager.getFavoriteStyleIndex();
   }
 
   void onShadowRoot(ShadowRoot shadowRoot) {
-    var form = querySelector(FORM_ID);
+    var form = querySelector(FORM_SELECTOR);
     configure(form);
   }
 
@@ -34,27 +36,27 @@ class ChoiceController implements ShadowRootAware {
    * sets the currentlyChecked dynamic attribute according to checked attribute
    */
   configure(FormElement form) {
-    var radios = form.querySelectorAll("input[type='radio'][name='favorite_style']");
+    var radios = form.querySelectorAll(FAVORITE_STYLE_RADIOS_SELECTOR);
     var hasFavorite = false;
     for (var radio in radios) {
-      if (num.parse(radio.value) == favorite) {
+      if (int.parse(radio.value) == favorite) {
         hasFavorite = radio.checked = true;
       }
     }
 
-    configureAction(hasFavorite, form.querySelector("input[type='submit']"));
+    configureAction(hasFavorite, form.querySelector(FORM_SUBMIT_SELECTOR));
   }
 
   /**
    * Event handler for radio's onclick; toggles the checked state of the radio button and calls configure()
    */
-  void toggle(num value) {
-    var radio = querySelector("#theme_" + value.toString() + "-radio");
+  void toggle(int value) {
+    var radio = querySelector("#theme_${value}-radio");
     if (radio != null) toggleRadio(radio);
   }
 
   void toggleRadio(InputElement radio) {
-    var value = num.parse(radio.value);
+    var value = int.parse(radio.value);
     if (favorite == value) {
       radio.checked = false;
     }
@@ -67,11 +69,11 @@ class ChoiceController implements ShadowRootAware {
       favorite = null;
     }
 
-    configureAction(radio.checked, radio.form.querySelector("input[type='submit']"));
+    configureAction(radio.checked, radio.form.querySelector(FORM_SUBMIT_SELECTOR));
   }
 
-  void selectStyle(num value) {
-    var radio = querySelector("#theme_" + value.toString() + "-radio");
+  void selectStyle(int value) {
+    var radio = querySelector("#theme_${value}-radio");
     if (radio != null) {
       radio.checked = !radio.checked;
       toggleRadio(radio);
@@ -79,11 +81,10 @@ class ChoiceController implements ShadowRootAware {
   }
 
   bool choose() {
-    var form = querySelector(FORM_ID);
-    var radios = form.querySelectorAll("input[type='radio'][name='favorite_style']");
+    var form = querySelector(FORM_SELECTOR);
+    var radios = form.querySelectorAll(FAVORITE_STYLE_RADIOS_SELECTOR);
     var value = null;
-    for (var i = 0; i < radios.length; ++i) {
-      var radio = radios[i];
+    for (var radio in radios) {
       if (radio.checked) {
         value = radio.value;
         break;

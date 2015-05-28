@@ -10,12 +10,15 @@ import 'package:crunk_net/style_manager.dart';
 @Component(selector: 'themer', templateUrl: 'home.html', useShadowDom: false)
 class ThemeController {
   StyleManager _styleManager;
+  Router _router;
 
-  ThemeController(Router router) {
-    _styleManager = new StyleManager(router);
+  ThemeController(this._router) {
+    _styleManager = new StyleManager();
   }
 
   void next() {
-    _styleManager.nextStyle();
+    if (!_styleManager.nextStyle()) {
+      _router.go('choose', {}, replace: true);
+    }
   }
 }
