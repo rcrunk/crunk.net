@@ -6,12 +6,12 @@
   ],
   "description": "Crunk.net website.",
   "keywords": [
-    "Angular2",
-    "Typescript",
+    "Angular",
+    "Dart",
     "Bootstrap",
     "Themes"
   ],
-  "license": "MIT",
+  "license": "ISC (Internet Software Consortium)",
   "homepage": "crunk.net",
   "ignore": [
     "**/.*",

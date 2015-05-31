@@ -8,6 +8,7 @@ import 'dart:html';
 import 'package:logging/logging.dart';
 import 'package:angular/angular.dart';
 import 'package:crunk_net/style_manager.dart';
+import 'package:crunk_net/components/spinner.dart';
 
 @Component(selector: 'chooser', templateUrl: 'choices.html', useShadowDom: false)
 class ChoiceController implements ShadowRootAware {
@@ -19,27 +20,31 @@ class ChoiceController implements ShadowRootAware {
   StyleManager _styleManager;
   Router _router;
 
-  int favorite = null;
+  int _favorite;
 
   ChoiceController(this._router) {
     _styleManager = new StyleManager();
-    favorite = _styleManager.getFavoriteStyleIndex();
+    _favorite = _styleManager.getFavoriteStyleIndex();
   }
 
+  /**
+   * Though we don't use the shadow dom, this still triggers when the templateUrl is
+   * attached. At this point, selectors across the template are now available.
+   */
   void onShadowRoot(ShadowRoot shadowRoot) {
     var form = querySelector(FORM_SELECTOR);
-    configure(form);
+    _configure(form);
   }
 
   /**
    * Configures the submit button with appropriate display value and label and
    * sets the currentlyChecked dynamic attribute according to checked attribute
    */
-  configure(FormElement form) {
+  void _configure(FormElement form) {
     var radios = form.querySelectorAll(FAVORITE_STYLE_RADIOS_SELECTOR);
     var hasFavorite = false;
     for (var radio in radios) {
-      if (int.parse(radio.value) == favorite) {
+      if (int.parse(radio.value) == _favorite) {
         hasFavorite = radio.checked = true;
       }
     }
@@ -57,16 +62,16 @@ class ChoiceController implements ShadowRootAware {
 
   void toggleRadio(InputElement radio) {
     var value = int.parse(radio.value);
-    if (favorite == value) {
+    if (_favorite == value) {
       radio.checked = false;
     }
 
     if (radio.checked) {
-      favorite = value;
-      _styleManager.setCurrentStyleIndex(favorite);
+      _favorite = value;
+      _styleManager.setCurrentStyleIndex(_favorite);
     }
     else {
-      favorite = null;
+      _favorite = null;
     }
 
     configureAction(radio.checked, radio.form.querySelector(FORM_SUBMIT_SELECTOR));

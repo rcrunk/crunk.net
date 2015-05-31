@@ -1,0 +1,660 @@
+/*!
+ * Copyright 2015, Crunk Biz, LLC.
+ * Licensed under ISC (https://github.com/rcrunk/crunk.net/LICENSE.md)
+ */
+@import "../../less/mixins/vendor.less";
+
+div[spinner] {
+  &.on.initial {
+    display: block;
+    position: absolute;
+    top: 33%;
+    left: 47.5%;
+    z-index: 100;
+    font-size: 10px;
+    margin: 5em auto;
+    text-indent: -9999em;
+    width: 11em;
+    height: 11em;
+    border-radius: 50%;
+    background: #06f;
+    background: -webkit-linear-gradient(left, #06f 10%, rgba(0, 102, 255, 0) 42%);
+    background:    -moz-linear-gradient(left, #06f 10%, rgba(0, 102, 255, 0) 42%);
+    background:     -ms-linear-gradient(left, #06f 10%, rgba(0, 102, 255, 0) 42%);
+    background:      -o-linear-gradient(left, #06f 10%, rgba(0, 102, 255, 0) 42%);
+    background:         linear-gradient(to right, #06f 10%, rgba(0, 102, 255, 0) 42%);
+    .animate(circlespin, 1.4s, infinite, 0, linear);
+    .transform(translateZ(0));
+
+    &:before {
+      width: 50%;
+      height: 50%;
+      background: #06f;
+      border-radius: 100% 0 0 0;
+      position: relative;
+      top: 0;
+      left: 0;
+      content: '';
+    }
+
+    &:after {
+      background: #fff;
+      width: 75%;
+      height: 75%;
+      border-radius: 50%;
+      content: '';
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  &.on.scaleout {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    background-color: #333;
+    border-radius: 100%;
+    .animate(scaleout, 1.0s, infinite, 0, ease-in-out);
+  }
+
+  &.on.pulse {
+    position: absolute;
+    z-index: 100;
+    top: 33%;
+    left: 49.5%;
+  }
+
+  &.on.pulse, &.on.pulse:before, &.on.pulse:after {
+    background: #c3f;
+    width: 1em;
+    height: 4em;
+    .animate(pulse, 1s, infinite, 0, ease-in-out);
+  }
+
+  &.on.pulse:before, &.on.pulse:after {
+    position: absolute;
+    top: 0;
+    content: '';
+  }
+
+  &.on.pulse:before {
+    left: -1.5em;
+    .animation-delay(-0.32s);
+  }
+
+  &.on.pulse {
+    text-indent: -9999em;
+    font-size: 11px;
+    .transform(translateZ(0));
+    .animation-delay(-0.16s);
+  }
+
+  &.on.pulse:after {
+    left: 1.5em;
+  }
+
+  &.on.gravity {
+    z-index: 100;
+    font-size: 90px;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: 47.5%;
+    .transform(translateZ(0));
+    .animate(gravityspin, 1.7s, infinite, 0, ease);
+  }
+
+  &.on.rotateplane {
+    width: 40px;
+    height: 40px;
+    background-color: #113300;
+    border: 1px solid #360;
+    border-radius: 1%;
+    position: absolute;
+    top: 33%;
+    left: 47.5%;
+    left: ~"calc(50% - 20px)";
+    z-index: 100;
+    .animate(rotateplane, 1.2s, infinite, 0, ease-in-out);
+  }
+
+  &.on.searchlight, &.on.searchlight:before, &.on.searchlight:after {
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    .animate(searchlight, 1.8s, infinite, 0, ease-in-out);
+    .animation-fill-mode(both);
+  }
+
+  &.on.searchlight {
+    position: absolute;
+    top: 33%;
+    left: 49.5%;
+    z-index: 100;
+    font-size: 10px;
+    text-indent: -9999em;
+    .transform(translateZ(0));
+    .animation-delay(-0.16s);
+  }
+
+  &.on.searchlight:before {
+    left: -3.5em;
+    .animation-delay(-0.32s);
+  }
+
+  &.on.searchlight:after {
+    left: 3.5em;
+  }
+
+  &.on.searchlight:before, &.on.searchlight:after {
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+
+  &.on.atebits {
+    position: absolute;
+    bottom: 33%;
+    right: 49.5%;
+    background: rgba(139, 0, 0, 1);
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    overflow: hidden;
+    text-indent: -9999px;
+    -webkit-box-shadow: rgba(139, 0, 0, .75) -12px -12px 0 0,
+                        rgba(139, 0, 0, .75) 12px -12px 0 0,
+                        rgba(139, 0, 0, .75) -12px 0 0 0,
+                        rgba(139, 0, 0, .75) 12px 0 0 0,
+                        rgba(139, 0, 0, .75) -12px 12px 0 0,
+                        rgba(139, 0, 0, .75) 0 12px 0 0,
+                        rgba(139, 0, 0, .75) 12px 12px 0 0;
+    -moz-box-shadow:  rgba(139, 0, 0, .75) -12px -12px 0 0,
+                      rgba(139, 0, 0, .75) 12px -12px 0 0,
+                      rgba(139, 0, 0, .75) -12px 0 0 0,
+                      rgba(139, 0, 0, .75) 12px 0 0 0,
+                      rgba(139, 0, 0, .75) -12px 12px 0 0,
+                      rgba(139, 0, 0, .75) 0 12px 0 0,
+                      rgba(139, 0, 0, .75) 12px 12px 0 0;
+    box-shadow: rgba(139, 0, 0, .75) -12px -12px 0 0,
+                rgba(139, 0, 0, .75) 12px -12px 0 0,
+                rgba(139, 0, 0, .75) -12px 0 0 0,
+                rgba(139, 0, 0, .75) 12px 0 0 0,
+                rgba(139, 0, 0, .75) -12px 12px 0 0,
+                rgba(139, 0, 0, .75) 0 12px 0 0,
+                rgba(139, 0, 0, .75) 12px 12px 0 0;
+    .animate(atebits, 3.5s, infinite, 0, ease-in-out);
+    .transform-origin(50% 50%);
+  }
+
+  &.on.throbber {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    .animate(throbber, 2000ms, infinite, 300ms, ease-out);
+    background: #dde2e7;
+    display: inline-block;
+    text-indent: -9999px;
+    width: 0.9em;
+    height: 1.5em;
+    margin: 0 1.6em;
+
+    &:before, &:after {
+      background: #dde2e7;
+      content: '\x200B';
+      display: inline-block;
+      width: 0.9em;
+      height: 1.5em;
+      position: absolute;
+      top: 0;
+    }
+
+    &:before {
+      .animate(throbber, 2000ms, infinite, 150ms, ease-out);
+      left: -1.6em;
+    }
+
+    &:after {
+      .animate(throbber, 2000ms, infinite, 450ms,  ease-out);
+      right: -1.6em;
+    }
+  }
+
+  &.on.flower {
+    overflow: hidden;
+    position: absolute;
+    bottom: 33%;
+    left: 47.5%;
+    z-index: 100;
+    text-indent: -9999px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #009;
+    border-radius: 100%;
+    -webkit-box-shadow: white 0 0 15px 0,
+      #9cf -12px -12px 0 4px,
+      #69f 12px -12px 0 4px,
+      #69f 12px 12px 0 4px,
+      #09f -12px 12px 0 4px;
+    -moz-box-shadow: white 0 0 15px 0,
+      #9cf -12px -12px 0 4px,
+      #69f 12px -12px 0 4px,
+      #69f 12px 12px 0 4px,
+      #09f -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0,
+      #9cf -12px -12px 0 4px,
+      #69f 12px -12px 0 4px,
+      #69f 12px 12px 0 4px,
+      #09f -12px 12px 0 4px;
+    .animate(flower, 5s, infinite, initial, ease-in-out, initial);
+    .transform-origin(50% 50%);
+  }
+
+  &.off {
+    display: none;
+  }
+}
+
+/*!
+ * Adapted from load3 by Luke Haas.
+ * https://github.com/lukehaas/css-loaders/blob/step2/less/load3.less
+ */
+@-webkit-keyframes circlespin {
+  0% { .transform(rotate(0deg)); }
+  100% { .transform(rotate(360deg)); }
+}
+@-moz-keyframes circlespin {
+  0% { .transform(rotate(0deg)); }
+  100% { .transform(rotate(360deg)); }
+}
+@keyframes circlespin {
+  0% { .transform(rotate(0deg)); }
+  100% { .transform(rotate(360deg)); }
+}
+
+/*!
+ * The scaleout was adapted from pulse by Tobias Ahlin.
+ * https://github.com/tobiasahlin/SpinKit/blob/master/scss/spinners/5-pulse.scss
+ */
+@-webkit-keyframes scaleout {
+  0% { .transform(scale(0.0)) }
+  100% { .transform(scale(1.0)); opacity: 0; }
+}
+@-moz-keyframes scaleout {
+  0% { .transform(scale(0.0)) }
+  100% { .transform(scale(1.0)); opacity: 0; }
+}
+@keyframes scaleout {
+  0% { .transform(scale(0.0)) }
+  100% { .transform(scale(1.0)); opacity: 0; }
+}
+
+/*!
+ * The pulse was adapted from load1 by lukehass.
+ * https://github.com/lukehaas/css-loaders/blob/step2/less/load1.less
+ */
+@-webkit-keyframes pulse {
+  0%, 80%, 100% {
+    box-shadow: 0 0 #c3f;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em #c3f;
+    height: 5em;
+  }
+}
+@-moz-keyframes pulse {
+  0%, 80%, 100% {
+    box-shadow: 0 0 #c3f;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em #c3f;
+    height: 5em;
+  }
+}
+@keyframes pulse {
+  0%, 80%, 100% {
+    box-shadow: 0 0 #c3f;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em #c3f;
+    height: 5em;
+  }
+}
+
+/*!
+ * The gravityspin was adapted from load6 by Luke Haas.
+ * https://github.com/lukehaas/css-loaders/blob/step2/less/load6.less
+ */
+@-webkit-keyframes gravityspin {
+  0% {
+    .transform( rotate(0deg));
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.087em -0.825em 0 -0.42em #fff,
+      -0.173em -0.812em 0 -0.44em #fff,
+      -0.256em -0.789em 0 -0.46em #fff,
+      -0.297em -0.775em 0 -0.477em #fff;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.338em -0.758em 0 -0.42em #fff,
+      -0.555em -0.617em 0 -0.44em #fff,
+      -0.671em -0.488em 0 -0.46em #fff,
+      -0.749em -0.34em 0 -0.477em #fff;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.377em -0.74em 0 -0.42em #fff,
+      -0.645em -0.522em 0 -0.44em #fff,
+      -0.775em -0.297em 0 -0.46em #fff,
+      -0.82em -0.09em 0 -0.477em #fff;
+  }
+  100% {
+    .transform(rotate(360deg));
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+}
+@-moz-keyframes gravityspin {
+  0% {
+    .transform( rotate(0deg));
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.087em -0.825em 0 -0.42em #fff,
+      -0.173em -0.812em 0 -0.44em #fff,
+      -0.256em -0.789em 0 -0.46em #fff,
+      -0.297em -0.775em 0 -0.477em #fff;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.338em -0.758em 0 -0.42em #fff,
+      -0.555em -0.617em 0 -0.44em #fff,
+      -0.671em -0.488em 0 -0.46em #fff,
+      -0.749em -0.34em 0 -0.477em #fff;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.377em -0.74em 0 -0.42em #fff,
+      -0.645em -0.522em 0 -0.44em #fff,
+      -0.775em -0.297em 0 -0.46em #fff,
+      -0.82em -0.09em 0 -0.477em #fff;
+  }
+  100% {
+    .transform(rotate(360deg));
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+}
+@keyframes gravityspin {
+  0% {
+    .transform(rotate(0deg));
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.087em -0.825em 0 -0.42em #fff,
+      -0.173em -0.812em 0 -0.44em #fff,
+      -0.256em -0.789em 0 -0.46em #fff,
+      -0.297em -0.775em 0 -0.477em #fff;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.338em -0.758em 0 -0.42em #fff,
+      -0.555em -0.617em 0 -0.44em #fff,
+      -0.671em -0.488em 0 -0.46em #fff,
+      -0.749em -0.34em 0 -0.477em #fff;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      -0.377em -0.74em 0 -0.42em #fff,
+      -0.645em -0.522em 0 -0.44em #fff,
+      -0.775em -0.297em 0 -0.46em #fff,
+      -0.82em -0.09em 0 -0.477em #fff;
+  }
+  100% {
+    .transform(rotate(360deg));
+    box-shadow: 0 -0.83em 0 -0.4em #fff,
+      0 -0.83em 0 -0.42em #fff,
+      0 -0.83em 0 -0.44em #fff,
+      0 -0.83em 0 -0.46em #fff,
+      0 -0.83em 0 -0.477em #fff;
+  }
+}
+
+/*!
+ * The rotateplane was adapted from rotating-plane by Tobias Ahlin.
+ * https://github.com/tobiasahlin/SpinKit/blob/master/scss/spinners/1-rotating-plane.scss
+ */
+@-ms-keyframes rotateplane {
+  0% { .transform(perspective(120px)) }
+  50% { .transform(perspective(120px) rotateY(180deg)) }
+  100% { .transform(perspective(120px) rotateY(180deg)  rotateX(180deg)) }
+}
+@-webkit-keyframes rotateplane {
+  0% { .transform(perspective(120px)) }
+  50% { .transform(perspective(120px) rotateY(180deg)) }
+  100% { .transform(perspective(120px) rotateY(180deg)  rotateX(180deg)) }
+}
+@-moz-keyframes rotateplane {
+  0% { .transform(perspective(120px)) }
+  50% { .transform(perspective(120px) rotateY(180deg)) }
+  100% { .transform(perspective(120px) rotateY(180deg)  rotateX(180deg)) }
+}
+@keyframes rotateplane {
+  0% { .transform(perspective(120px)) }
+  50% { .transform(perspective(120px) rotateY(180deg)) }
+  100% { .transform(perspective(120px) rotateY(180deg)  rotateX(180deg)) }
+}
+
+/*!
+ * The searchlight was adapted from load7 by Luke Haas.
+ * https://github.com/lukehaas/css-loaders/blob/step2/less/load7.less
+ */
+@-webkit-keyframes searchlight {
+  0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em rgba(204,204,51,0.75); }
+  40% { box-shadow: 0 2.5em 0 0 rgba(153,102,0,.5); }
+}
+@-moz-keyframes searchlight {
+  0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em rgba(204,204,51,0.75); }
+  40% { box-shadow: 0 2.5em 0 0 rgba(153,102,0,.5); }
+}
+@keyframes searchlight {
+  0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em rgba(204,204,51,0.75); }
+  40% { box-shadow: 0 2.5em 0 0 rgba(153,102,0,.5);  }
+}
+
+/*!
+ * The atebits was adapted from atebits by John W. Long and Julia Elman.
+ * https://github.com/jlong/css-spinners/blob/master/sass/spinner/atebits.scss
+ */
+@-webkit-keyframes atebits {
+  0%  { .transform(rotate(0deg)) }
+  3%  { .transform(rotate(90deg)) }
+  10% { .transform(rotate(90deg)) }
+  13% { .transform(rotate(180deg)) }
+  20% { .transform(rotate(180deg)) }
+  23% { .transform(rotate(90deg)) }
+  30% { .transform(rotate(90deg)) }
+  33% { .transform(rotate(180deg)) }
+  40% { .transform(rotate(180deg)) }
+  43% { .transform(rotate(270deg)) }
+  50% { .transform(rotate(270deg)) }
+  53% { .transform(rotate(180deg)) }
+  60% { .transform(rotate(180deg)) }
+  63% { .transform(rotate(90deg)) }
+  70% { .transform(rotate(90deg)) }
+  73% { .transform(rotate(0deg)) }
+  80% { .transform(rotate(0deg)) }
+  83% { .transform(rotate(-90deg)) }
+  90% { .transform(rotate(-90deg)) }
+  93% { .transform(rotate(0deg)) }
+}
+@-moz-keyframes atebits {
+  0%  { .transform(rotate(0deg)) }
+  3%  { .transform(rotate(90deg)) }
+  10% { .transform(rotate(90deg)) }
+  13% { .transform(rotate(180deg)) }
+  20% { .transform(rotate(180deg)) }
+  23% { .transform(rotate(90deg)) }
+  30% { .transform(rotate(90deg)) }
+  33% { .transform(rotate(180deg)) }
+  40% { .transform(rotate(180deg)) }
+  43% { .transform(rotate(270deg)) }
+  50% { .transform(rotate(270deg)) }
+  53% { .transform(rotate(180deg)) }
+  60% { .transform(rotate(180deg)) }
+  63% { .transform(rotate(90deg)) }
+  70% { .transform(rotate(90deg)) }
+  73% { .transform(rotate(0deg)) }
+  80% { .transform(rotate(0deg)) }
+  83% { .transform(rotate(-90deg)) }
+  90% { .transform(rotate(-90deg)) }
+  93% { .transform(rotate(0deg)) }
+}
+@keyframes atebits {
+  0%  { .transform(rotate(0deg)) }
+  3%  { .transform(rotate(90deg)) }
+  10% { .transform(rotate(90deg)) }
+  13% { .transform(rotate(180deg)) }
+  20% { .transform(rotate(180deg)) }
+  23% { .transform(rotate(90deg)) }
+  30% { .transform(rotate(90deg)) }
+  33% { .transform(rotate(180deg)) }
+  40% { .transform(rotate(180deg)) }
+  43% { .transform(rotate(270deg)) }
+  50% { .transform(rotate(270deg)) }
+  53% { .transform(rotate(180deg)) }
+  60% { .transform(rotate(180deg)) }
+  63% { .transform(rotate(90deg)) }
+  70% { .transform(rotate(90deg)) }
+  73% { .transform(rotate(0deg)) }
+  80% { .transform(rotate(0deg)) }
+  83% { .transform(rotate(-90deg)) }
+  90% { .transform(rotate(-90deg)) }
+  93% { .transform(rotate(0deg)) }
+}
+
+/*!
+ * The atebits was adapted from throbber by John W. Long and Julia Elman.
+ * https://github.com/jlong/css-spinners/blob/master/css/spinner/throbber.css
+ */
+@-webkit-keyframes throbber {
+  0% { background: #fef; }
+  10% { background: #c9f; }
+  40% { background: #fef; }
+}
+@-moz-keyframes throbber {
+  0% { background: #fef; }
+  10% { background: #c9f; }
+  40% { background: #fef; }
+}
+@keyframes throbber {
+  0% { background: #fef; }
+  10% { background: #c9f; }
+  40% { background: #fef; }
+}
+
+/*!
+ * The atebits was adapted from flower by John W. Long and Julia Elman.
+ * https://github.com/jlong/css-spinners/blob/master/css/spinner/flower.css
+ */
+@-webkit-keyframes flower {
+  0% {
+    .transform(rotate(0deg));
+    -moz-box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+  }
+  50% {
+    .transform(rotate(1080deg));
+    -moz-box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+  }
+}
+@-moz-keyframes flower {
+  0% {
+    .transform(rotate(0deg));
+    -moz-box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+  }
+  50% {
+    .transform(rotate(1080deg));
+    -moz-box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+  }
+}
+@keyframes flower {
+  0% {
+    .transform(rotate(0deg));
+    -moz-box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+  }
+  50% {
+    .transform(rotate(1080deg));
+    -moz-box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+    box-shadow: white 0 0 15px 0, #9cf -12px -12px 0 4px, #69f 12px -12px 0 4px, #69f 12px 12px 0 4px, #09f -12px 12px 0 4px;
+  }
+}

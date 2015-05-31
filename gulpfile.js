@@ -15,24 +15,23 @@
 'use strict';
 
 var gulp = require('gulp');
+var child = require('child_process');
 var plugins = require('gulp-load-plugins')();
 
 var mainBowerFiles = require('main-bower-files');
-
-var dart = true;
 
 gulp.task('bower-js', function() {
   return gulp.src(mainBowerFiles())
     .pipe(plugins.filter('*.js'))
     .pipe(plugins.print())
-    .pipe(gulp.dest(dart ? 'src/web/js' : 'src/js'));
+    .pipe(gulp.dest('src/web/js'));
 });
 
 gulp.task('bower-css', function() {
   return gulp.src(mainBowerFiles())
     .pipe(plugins.filter(['*.css', '*.css.map']))
     .pipe(plugins.print())
-    .pipe(gulp.dest(dart ? 'src/web/css' : 'src/css'));
+    .pipe(gulp.dest('src/web/css'));
 });
 
 gulp.task('bower', ['bower-js', 'bower-css']);
@@ -43,52 +42,34 @@ gulp.task('css', function() {
   return gulp.src('src/less/*.less')
     .pipe(plugins.print())
     .pipe(plugins.less())
-    .pipe(gulp.dest(dart ? 'src/web/css' : 'src/css'));
+    .pipe(gulp.dest('src/web/css'));
 });
 
-var tsc = require('gulp-typescript');
-var tscOptions = {
-  target: 'ES5',
-  module: 'commonjs',
-  typescript: require('typescript'),
-  reporter: tsc.reporter.nullReporter()
-};
+gulp.task('js', function() { });
 
-gulp.task('tsc', function () {
-  if (!dart) {
-    var tscResult = gulp.src('src/ts/*.ts')
-        .pipe(plugins.print())
-        .pipe(tsc(tscOptions));
-    return tscResult.js.pipe(gulp.dest('src/js/'));
-  }
-});
-
-gulp.task('js', ['tsc']);
-
-gulp.task('watch', function() {
+gulp.task('watch', ['bower', 'images', 'css'], function() {
   gulp.watch('src/less/*.less', ['css']);
-  if (!dart) gulp.watch('src/ts/*.ts', ['js']);
+  child.spawn('pub', ['serve'], { cwd: process.cwd() + '/src', stdio: 'inherit' });
 });
+
+gulp.task('images', function() {
+  return gulp.src('src/images/**/*.{png,gif}')
+    .pipe(plugins.print())
+    .pipe(gulp.dest('src/web/images'));
+});
+
+gulp.task('default', ['bower', 'html', 'css', 'js', 'images']);
 
 var CacheBuster = require('gulp-cachebust');
 var cachebust = new CacheBuster();
 
-gulp.task('images', function() {
-  if (dart) {
-    return gulp.src('src/images/**/*.{png,gif}')
-        .pipe(plugins.imagemin())
-        .pipe(plugins.print())
-        .pipe(gulp.dest('src/web/images'));
-  }
-
+gulp.task('optimized_images', function() {
   return gulp.src('src/images/**/*.{jpg,gif}')
-      .pipe(plugins.imagemin())
-      .pipe(cachebust.resources())
-      .pipe(plugins.print())
-      .pipe(gulp.dest('dist/images'));
+    .pipe(plugins.imagemin())
+    .pipe(cachebust.resources())
+    .pipe(plugins.print())
+    .pipe(gulp.dest('dist/images'));
 });
-
-gulp.task('default', ['bower', 'html', 'css', 'js', 'images']);
 
 gulp.task('styles', function() {
   return gulp.src('src/css/**/*.css')
@@ -114,11 +95,11 @@ gulp.task('content', function() {
     .pipe(gulp.dest('dist'));
 });
 
-var runSequence = require('run-sequence');
-gulp.task('dist', function(done) {
-  runSequence('default', 'images', 'styles', 'scripts', 'content', done);
+gulp.task('dart', function() {
+  child.spawn('pub', ['build'], { cwd: process.cwd() + '/src', stdio: 'inherit' });
 });
 
-gulp.task('dart', function() {
-
+var runSequence = require('run-sequence');
+gulp.task('dist', function(done) {
+  runSequence('default', 'dart', 'optimized_images', 'styles', 'scripts', 'content', done);
 });

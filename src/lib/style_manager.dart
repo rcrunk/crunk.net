@@ -3,79 +3,88 @@
  * Licensed under ISC (https://github.com/rcrunk/crunk.net/LICENSE.md)
  */
 import 'dart:html';
-import 'package:logging/logging.dart';
+
+import 'package:crunk_net/components/spinner.dart';
 
 class StyleManager {
-  static const int MAX_STYLES = 8;
-  static const String CURRENT_STYLE_KEY = "currentStyle";
-  static const String FAVORITE_STYLE_KEY = "favoriteStyle";
-  static const String DYNAMIC_STYLE_SELECTOR = "link#dynamic-style";
+  static const int _MAX_STYLES = 8;
+  static const String _CURRENT_STYLE_KEY = "currentStyle";
+  static const String _FAVORITE_STYLE_KEY = "favoriteStyle";
+  static const String _DYNAMIC_STYLE_SELECTOR = "link#dynamic-style";
 
-  static final Logger log = new Logger('StyleManager');
+  //static final Spinner _spinner = new Spinner();
 
-  int favoriteStyle = null;
-  int currentStyle = 0;
-  int clickCount=  0;
+  int _favoriteStyle = null;
+  int _currentStyle = 0;
+  int _clickCount=  0;
 
-  Map<String, String> local = window.localStorage;
+  final BodyElement _body = querySelector("body");
+  Map<String, String> _local = window.localStorage;
+
 
   StyleManager() {
-    if (local.containsKey(FAVORITE_STYLE_KEY)) {
-      currentStyle = favoriteStyle = int.parse(local[FAVORITE_STYLE_KEY]);
+    if (_local.containsKey(_FAVORITE_STYLE_KEY)) {
+      _currentStyle = _favoriteStyle = int.parse(_local[_FAVORITE_STYLE_KEY]);
     }
-    else if (local.containsKey(CURRENT_STYLE_KEY)) {
-      currentStyle = int.parse(local[CURRENT_STYLE_KEY]);
+    else if (_local.containsKey(_CURRENT_STYLE_KEY)) {
+      _currentStyle = int.parse(_local[_CURRENT_STYLE_KEY]);
     }
 
-    loadStyle(currentStyle);
+    // Whack this so reload will revert to default if no favorite set.
+    _local.remove(_CURRENT_STYLE_KEY);
+
+    _loadStyle(_currentStyle);
   }
 
   /**
    * Advances to next style, returning true, or false when all styles have been shown.
    */
   bool nextStyle() {
-    if (++clickCount == MAX_STYLES) {
-      local[CURRENT_STYLE_KEY] = ((currentStyle + 1) % MAX_STYLES).toString();
+    if (++_clickCount == _MAX_STYLES) {
+      _local[_CURRENT_STYLE_KEY] = ((_currentStyle + 1) % _MAX_STYLES).toString();
       return false;
     }
     
-    loadStyle(currentStyle = (currentStyle + 1) % MAX_STYLES);
+    _loadStyle(_currentStyle = (_currentStyle + 1) % _MAX_STYLES);
     return true;
   }
 
   int getFavoriteStyleIndex() {
-    if (favoriteStyle == null && local.containsKey(FAVORITE_STYLE_KEY)) {
-      favoriteStyle = int.parse(local[FAVORITE_STYLE_KEY]);
+    if (_favoriteStyle == null && _local.containsKey(_FAVORITE_STYLE_KEY)) {
+      _favoriteStyle = int.parse(_local[_FAVORITE_STYLE_KEY]);
     }
-    return favoriteStyle;
+    return _favoriteStyle;
   }
 
   void setCurrentStyleIndex(int newStyleIndex) {
-    loadStyle(currentStyle = newStyleIndex);
+    _loadStyle(_currentStyle = newStyleIndex);
   }
 
   void setFavoriteStyleIndex(int favoriteStyleIndex) {
-    local[FAVORITE_STYLE_KEY] = (favoriteStyle = favoriteStyleIndex).toString();
+    _local[_FAVORITE_STYLE_KEY] = (_favoriteStyle = favoriteStyleIndex).toString();
   }
 
   void clearFavoriteStyle() {
-    favoriteStyle = null;
-    local.remove(FAVORITE_STYLE_KEY);
+    _favoriteStyle = null;
+    _local.remove(_FAVORITE_STYLE_KEY);
   }
 
-  static loadStyle(int styleIndex) async {
-    var filename = makeStyleSheetHref(styleIndex);
-    var link = querySelector(DYNAMIC_STYLE_SELECTOR);
+  void _loadStyle(int styleIndex) {
+    Spinner.on();
+    var link = querySelector(_DYNAMIC_STYLE_SELECTOR);
     if (link != null) {
-      // Issue synchronous request to load stylesheet into cache.
-      await HttpRequest.getString(filename);
-
-      // Use it.
-      link.setAttribute("href", filename);
+      var styleSheet = _makeStyleSheetHref(styleIndex);
+      // Issue synchronous request to load stylesheet into cache. Doesn't work for Chrome.
+      HttpRequest.request(styleSheet, requestHeaders: {'Cache-Control': 'max-age=600'})
+        .then((HttpRequest value) {
+          link.setAttribute("href", styleSheet);
+          //Spinner.off();
+          Spinner.setAnimationIndex(styleIndex);
+        });
     }
   }
 
-  static String makeStyleSheetHref(int styleIndex) {
+  static String _makeStyleSheetHref(int styleIndex) {
     return 'css/style-' + styleIndex.toString() + '.css';
   }
 }
