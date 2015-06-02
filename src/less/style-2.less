@@ -117,3 +117,33 @@ div#content {
   text-decoration: underline;
   cursor: pointer;
 }
+
+span.next-theme {
+  .animate(spin 1.5s ease-in-out 2s 10 alternate);
+}
+
+@-ms-keyframes spin {
+  from { -ms-transform: rotate(0deg); }
+  to { -ms-transform: rotate(90deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(90deg); }
+}
+
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(90deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(90deg); }
+}
+
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(90deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(90deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(90deg); }
+}

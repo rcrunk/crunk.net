@@ -11,12 +11,13 @@ import 'package:angular/angular.dart';
            template: '<div spinner ng-class="[state, animation]"></div>')
 class Spinner {
   static final _spinnerStyleTypes = [
-    'scaleout', 'pulse', 'gravity', 'rotateplane', 'searchlight', 'throbber', 'atebits', 'flower'
+    'scaleout', 'pulse', 'gravity', 'rotateplane', 'hexdots', 'throbber', 'atebits', 'flower'
   ];
 
   static Spinner instance;
 
   Spinner() {
+    // Ugh, this really sucks.
     instance = this;
   }
 

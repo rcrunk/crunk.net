@@ -12,7 +12,7 @@ class StyleManager {
   static const String _FAVORITE_STYLE_KEY = "favoriteStyle";
   static const String _DYNAMIC_STYLE_SELECTOR = "link#dynamic-style";
 
-  //static final Spinner _spinner = new Spinner();
+  static var loadedStyles = [ false, false, false, false, false, false, false, false ];
 
   int _favoriteStyle = null;
   int _currentStyle = 0;
@@ -75,12 +75,20 @@ class StyleManager {
     if (link != null) {
       var styleSheet = _makeStyleSheetHref(styleIndex);
       // Issue synchronous request to load stylesheet into cache. Doesn't work for Chrome.
-      HttpRequest.request(styleSheet, requestHeaders: {'Cache-Control': 'max-age=600'})
-        .then((HttpRequest value) {
-          link.setAttribute("href", styleSheet);
-          //Spinner.off();
-          Spinner.setAnimationIndex(styleIndex);
-        });
+      if (!loadedStyles[styleIndex]) {
+        HttpRequest.request(styleSheet, requestHeaders: {'Cache-Control': 'max-age=600'})
+          .then((HttpRequest value) {
+            link.setAttribute("href", styleSheet);
+            Spinner.off();
+            Spinner.setAnimationIndex(styleIndex);
+          });
+        loadedStyles[styleIndex] = true;
+      }
+      else {
+        link.setAttribute("href", styleSheet);
+        Spinner.off();
+        Spinner.setAnimationIndex(styleIndex);
+      }
     }
   }
 
