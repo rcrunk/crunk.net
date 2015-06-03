@@ -22,8 +22,46 @@ found that my RoR's implementation didn't work on the latest version. At this po
 anyway), and reimplemented using JavaScript which allowed the site to be completely static.
 
 Fast forward to today (2015), CSS and client side technologies have advanced and mobile devices have become ubiquitous
-and crunk.net is back in the stone ages. This is about to change, the site undergoing major surgery to make responsive 
-across mobile, tablet, and desktops, as well as a technological update. 
+and crunk.net has finally undergone a long overdue refresh. The changes include, but are not limited to:
 
+* Mobile friendly (as deemed by: https://www.google.com/webmasters/tools/mobile-friendly/?url=www.crunk.net)
+* Now a single page application.
+* Responsive (leverage Bootstrap: http://getbootstrap.com)
+* Leverage recent (and not so recent) capabilities of CSS; no longer are images for the logo, they are all
+done now using CSS.
+* All JavaScript rewritten in Dart/Angular.
+* Use local storage instead of cookies to maintain persistent state.
+* Select favorite style page now switches styles immediately on selection of a style.
+* CSS spinners appear when switching styles.
+
+Dependencies
+------------
+0. The code itself. Use git to clone or one of the other methods described at https://github.com/rcrunk/crunk.net.
+0. Node and Node Package Manager (npm) (see: https://docs.npmjs.com/getting-started/installing-node 
+or https://nodejs.org/download/). Do not proceed unless `npm -version` prints a version.
+0. Dart SDK (see: https://www.dartlang.org/downloads). This will vary depending on your OS. Do not proceed unless
+`pub help` prints a help message.
+0. Bower: `npm install -g bower`; if on a *nix derived system, will need to be root or precede command with `sudo `.
+0. Gulp: `npm install -g gulp`;  if on a *nix derived system, will need to be root or precede command with `sudo `.
+0. Less: `npm install -g less`;  if on a *nix derived system, will need to be root or precede command with `sudo `.
+
+Building
+--------
+All of the following commands are entered from the top level directory that was checked out or cloned. A directory
+listing should show this file (README.md), package.json, bower.json, and gulpfile.js. 
+None of the following steps require root permissions.
+
+0. Pull npm locally managed dependencies: `npm install`.
+0. Pull bower locally managed dependencies: `bower install`.
+0. Build and optimize: `gulp dist`; at the completion, the output will be in the dist folder.
+
+Developing
+==========
+One can use their favorite editor or IDE to modify the code.  
+Use `gulp watch` to create the development environment and watch for any code modifications you make.  
+To see in browser, navigate to http://localhost:8080; a simple reload will refresh with any changes that you make.
+
+
+Enjoy!
 
 Mr. Crunk

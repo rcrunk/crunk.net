@@ -36,70 +36,87 @@ gulp.task('bower-css', function() {
 
 gulp.task('bower', ['bower-js', 'bower-css']);
 
-gulp.task('html', function() { });
-
-gulp.task('css', function() {
-  return gulp.src('src/less/*.less')
-    .pipe(plugins.print())
-    .pipe(plugins.less())
-    .pipe(gulp.dest('src/web/css'));
-});
-
-gulp.task('js', function() { });
-
-gulp.task('watch', ['bower', 'images', 'css'], function() {
-  gulp.watch('src/less/*.less', ['css']);
-  child.spawn('pub', ['serve'], { cwd: process.cwd() + '/src', stdio: 'inherit' });
-});
-
 gulp.task('images', function() {
   return gulp.src('src/images/**/*.{png,gif}')
     .pipe(plugins.print())
     .pipe(gulp.dest('src/web/images'));
 });
 
-gulp.task('default', ['bower', 'html', 'css', 'js', 'images']);
+gulp.task('css-lib', function() {
+  return gulp.src('src/lib/**/*.less')
+    .pipe(plugins.print())
+    .pipe(plugins.less())
+    .pipe(gulp.dest('src/lib'));
+});
 
-var CacheBuster = require('gulp-cachebust');
-var cachebust = new CacheBuster();
+gulp.task('css-web', function() {
+  return gulp.src('src/less/*.less')
+    .pipe(plugins.print())
+    .pipe(plugins.less())
+    .pipe(gulp.dest('src/web/css'));
+});
 
-gulp.task('optimized_images', function() {
-  return gulp.src('src/images/**/*.{jpg,gif}')
+gulp.task('css', ['css-lib', 'css-web']);
+
+gulp.task('watch', ['bower', 'images', 'css'], function() {
+  gulp.watch('src/lib/**/*.less', ['css-lib']);
+  gulp.watch('src/less/*.less', ['css-web']);
+  child.spawnSync('pub', ['serve'], { cwd: process.cwd() + '/src', stdio: 'inherit' });
+});
+
+gulp.task('default', ['bower', 'images', 'css']);
+
+gulp.task('optimize-images', function() {
+  return gulp.src('src/build/web/**/*.{png,gif}')
     .pipe(plugins.imagemin())
-    .pipe(cachebust.resources())
-    .pipe(plugins.print())
-    .pipe(gulp.dest('dist/images'));
-});
-
-gulp.task('styles', function() {
-  return gulp.src('src/css/**/*.css')
-    .pipe(plugins.minifyCss())
-    .pipe(cachebust.references())
-    .pipe(plugins.print())
-    .pipe(gulp.dest('dist/css'));
-});
-
-gulp.task('scripts', function() {
-  return gulp.src('src/js/**/*.js')
-    .pipe(plugins.uglify())
-    .pipe(plugins.print())
-    .pipe(cachebust.references())
-    .pipe(plugins.print())
-    .pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('content', function() {
-  return gulp.src('src/**/*.html')
-    .pipe(cachebust.references())
     .pipe(plugins.print())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dart', function() {
-  child.spawn('pub', ['build'], { cwd: process.cwd() + '/src', stdio: 'inherit' });
+gulp.task('optimize-styles', function() {
+  return gulp.src('src/build/web/**/*.css')
+    .pipe(plugins.minifyCss())
+    .pipe(plugins.print())
+    .pipe(gulp.dest('dist'));
 });
+
+gulp.task('optimize-scripts', function() {
+  return gulp.src('src/build/web/**/*.js')
+    .pipe(plugins.uglify())
+    .pipe(plugins.print())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('build', ['default'], function() {
+  child.spawnSync('pub', ['build'], { cwd: process.cwd() + '/src', stdio: 'inherit' });
+});
+
+gulp.task('populate', function() {
+  return gulp.src('src/build/web/**')
+    .pipe(plugins.print())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('optimize', ['optimize-images', 'optimize-styles', 'optimize-scripts']);
 
 var runSequence = require('run-sequence');
 gulp.task('dist', function(done) {
-  runSequence('default', 'dart', 'optimized_images', 'styles', 'scripts', 'content', done);
+  runSequence('build', 'populate', 'optimize', done);
+});
+
+gulp.task('clean', function() {
+  return gulp.src(['src/build', 'dist'], {read: false})
+    .pipe(plugins.clean());
+});
+
+gulp.task('real-clean', ['clean'], function() {
+  return gulp.src(['src/web/{css,images,js}', 'src/lib/**/*.css', 'src/**/packages', 'src/.pub'], {read: false})
+    .pipe(plugins.print())
+    .pipe(plugins.clean());
+});
+
+gulp.task('dist-clean', ['real-clean'], function() {
+return gulp.src(['bower_components', 'node_modules'], {read: false})
+    .pipe(plugins.print())
+    .pipe(plugins.clean());
 });
