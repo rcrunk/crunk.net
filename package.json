@@ -11,13 +11,13 @@
     "url": "git@github.com:rcrunk/crunk.net.git"
   },
   "keywords": [
-    "Angular2",
+    "Angular",
     "TypeScript",
     "Bootstrap",
     "Theme"
   ],
   "author": "Mr. Crunk",
-  "license": "ISC (Internet Software Consortium)",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/rcrunk/crunk.net/issues"
   },

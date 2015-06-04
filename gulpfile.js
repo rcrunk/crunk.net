@@ -61,7 +61,7 @@ gulp.task('css', ['css-lib', 'css-web']);
 gulp.task('watch', ['bower', 'images', 'css'], function() {
   gulp.watch('src/lib/**/*.less', ['css-lib']);
   gulp.watch('src/less/*.less', ['css-web']);
-  child.spawnSync('pub', ['serve'], { cwd: process.cwd() + '/src', stdio: 'inherit' });
+  child.spawn('pub', ['serve'], { cwd: process.cwd() + '/src', stdio: 'inherit' });
 });
 
 gulp.task('default', ['bower', 'images', 'css']);
