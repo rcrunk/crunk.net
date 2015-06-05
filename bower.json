@@ -1,9 +1,7 @@
 {
   "name": "crunk.net",
   "version": "3.0.0",
-  "authors": [
-    "Rolland Crunk <rcrunk@yahoo.com>"
-  ],
+  "authors": [ "Crunk Biz, LLC" ],
   "description": "Crunk.net website.",
   "keywords": [
     "Angular",
@@ -11,7 +9,7 @@
     "Bootstrap",
     "Themes"
   ],
-  "license": "ISC (Internet Software Consortium)",
+  "license": "ISC",
   "homepage": "crunk.net",
   "ignore": [
     "**/.*",
