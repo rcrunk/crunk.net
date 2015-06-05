@@ -4,6 +4,11 @@
  */
 @import "mixins/vendor.less";
 
+@font-face {
+  font-family: 'Audiowide';
+  src: url('../fonts/Audiowide/Audiowide-Regular.ttf');
+}
+
 body {
   background: #360;
   color: #fd0;
@@ -11,7 +16,7 @@ body {
   padding: 0;
   font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 12pt;
-  transition: all 2s;
+  .transition(all 1s ease-in-out);
 }
 
 .wrapper {
@@ -22,7 +27,7 @@ div#logo {
   position: absolute;
   bottom: -8.25rem;
   right: 1%;
-  transition: all 3s;
+  .transition(all 1s linear);
 
   @media (max-width: 624px) {
     bottom: -7rem;
@@ -64,7 +69,6 @@ div#content {
   border-bottom-color: #607848;
   border-radius: 1rem;
   text-align: left;
-  transition: all 2s;
 
   @media (max-width: 624px) {
     margin: 2%;

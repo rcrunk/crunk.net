@@ -2,11 +2,18 @@
  * Copyright 2015, Crunk Biz, LLC.
  * Licensed under ISC (https://github.com/rcrunk/crunk.net/LICENSE.md)
  */
+@import "mixins/vendor.less";
+
+@font-face {
+  font-family: 'Nothing You Could Do';
+  src: url('../fonts/Nothing_You_Could_Do/NothingYouCouldDo.ttf');
+}
+
 body {
   background: #009;
   color: #09f;
-  transition: color 2s;
   font-family: cursive;
+  .transition(all 1s ease-out);
 }
 
 div#logo {
@@ -17,10 +24,9 @@ div#logo {
   margin: 0 auto;
   border: none;
   z-index: 0;
-  transition: all 2s;
+  .transition(all 1s linear);
 
   span.logo-text {
-    //display: none;
     font-family: 'Nothing You Could Do', cursive;
     font-size: 12rem;
     font-style: italic;
@@ -48,7 +54,6 @@ div#content {
   border: 1px dashed #09f;
   border-radius: 1rem;
   text-align: center;
-  transition: all 1s;
 
   .container {
     width: 100%;

@@ -21,18 +21,26 @@ a different style sheet on each "here" click.  Somewhere circa 2011, I switched 
 found that my RoR's implementation didn't work on the latest version. At this point I ditched RoR (as it was overkill
 anyway), and reimplemented using JavaScript which allowed the site to be completely static.
 
-Fast forward to today (2015), CSS and client side technologies have advanced and mobile devices have become ubiquitous
-and crunk.net has finally undergone a long overdue refresh. The changes include, but are not limited to:
+Fast forward to today (2015), CSS and client side technologies have advanced, mobile devices have become ubiquitous,
+and crunk.net finally received a long overdue refresh. The changes include, but are not limited to:
 
 * Mobile friendly (as deemed by: https://www.google.com/webmasters/tools/mobile-friendly/?url=www.crunk.net)
 * Now a single page application.
 * Responsive (leverage Bootstrap: http://getbootstrap.com)
-* Leverage recent (and not so recent) capabilities of CSS; no longer are images for the logo, they are all
+* Leverage recent (and not so recent) capabilities of CSS; no longer are images for the logos, they are all
 done now using CSS.
 * All JavaScript rewritten in Dart/Angular.
-* Use local storage instead of cookies to maintain persistent state.
+* Google fonts.
 * Select favorite style page now switches styles immediately on selection of a style.
+* Use local storage instead of cookies to maintain persistent state.
 * CSS spinners appear when switching styles.
+
+The one thing that has not undergone any significant change is the basic look (other than swapping styles Erozay
+and Ivefay). This is not for any particular affinity or visual appeal for any of the existing styles, but rather 
+for the challenge of transforming a pure desktop web client into a responsive client that works reasonably well
+across different devices and different dimensions of screen real estate. If I were to have redone it using a clean
+slate, it is likely that the look would be significantly different; perhaps I'll add a few other themes at some
+point (you might be skeptical...).
 
 Dependencies
 ------------
@@ -52,14 +60,18 @@ listing should show this file (README.md), package.json, bower.json, and gulpfil
 None of the following steps require root permissions.
 
 0. Pull npm locally managed dependencies: `npm install`.
-0. Pull bower locally managed dependencies: `bower install`.
 0. Build and optimize: `gulp dist`; at the completion, the output will be in the dist folder.
 
 Developing
-==========
+----------
 One can use their favorite editor or IDE to modify the code.  
 Use `gulp watch` to create the development environment and watch for any code modifications you make.  
 To see in browser, navigate to http://localhost:8080; a simple reload will refresh with any changes that you make.
+
+Feedback
+--------
+If you have any feedback or suggestions, please feel free to do so by creating a new issue at
+https://github.com/rcrunk/crunk.net/issues. 
 
 
 Enjoy!

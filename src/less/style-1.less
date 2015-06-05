@@ -4,6 +4,11 @@
  */
 @import "mixins/vendor.less";
 
+@font-face {
+  font-family: 'Dosis';
+  src: url('../fonts/Dosis/Dosis-SemiBold.ttf');
+}
+
 body {
   background: #CCC;
   color: #555;
@@ -11,7 +16,7 @@ body {
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-  transition: all 2s;
+  .transition(all 1s ease);
 }
 
 div#logo {
@@ -20,7 +25,7 @@ div#logo {
   text-align: left;
   margin: 12% 0 0 5%;
   padding: .75rem 0;
-  transition: all 3s;
+  .transition(all 1s linear);
 
   @media (max-width: 624px) {
     margin-top: 1%;
@@ -61,7 +66,6 @@ div#content {
   float: right;
   text-align: right;
   text-transform: lowercase;
-  transition: all 2s;
 
   @media (max-width: 624px) {
     margin: 1% 3%;

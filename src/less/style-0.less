@@ -4,6 +4,11 @@
  */
 @import "mixins/vendor.less";
 
+@font-face {
+  font-family: 'Bree Serif';
+  src: url('../fonts/Bree_Serif/BreeSerif-Regular.ttf');
+}
+
 body {
   background: white;
   color: black;
@@ -12,7 +17,7 @@ body {
   font-family: Times, serif;
   font-size: 12pt;
   font-style: italic;
-  transition: all 2s;
+  .transition(all 1s ease-out);
 }
 
 .wrapper {
@@ -23,7 +28,6 @@ div#logo {
   text-align: right;
   margin: 0 5%;
   padding: .75rem 0;
-  transition: all 3s;
 
   span.logo-text {
     letter-spacing: .15rem;
@@ -45,7 +49,6 @@ div#content {
   text-align: left;
   padding: 4px 1em 1em;
   border-top: 1px solid black;
-  transition: all 2s;
 
   .choice {
     padding-bottom: 2rem;

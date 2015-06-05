@@ -2,19 +2,22 @@
  * Copyright 2015, Crunk Biz, LLC.
  * Licensed under ISC (https://github.com/rcrunk/crunk.net/LICENSE.md)
  */
+@import "mixins/vendor.less";
+
 body, html {
   height: 100%;
 }
 
 body {
-  background: #9933CC;
-  color: #CCCCCC;
+  background: #93c;
+  color: #ccc;
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11pt;
   transition: all 1s;
   display: flex;
+  .transition(all 1s ease-in);
 }
 
 ng-view {
@@ -30,6 +33,7 @@ div#logo {
   height: 6rem;
   text-align: right;
   padding: 1rem;
+  .transition(all 1s linear);
 
   @media (max-width: 624px) {
     height: 5rem;
@@ -126,7 +130,7 @@ div#content {
 }
 
 .link {
-  color: #CCCCCC;
+  color: #ccc;
   text-decoration: underline;
   cursor: pointer;
 }

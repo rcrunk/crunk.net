@@ -4,6 +4,11 @@
  */
 @import "mixins/vendor.less";
 
+@font-face {
+  font-family: 'Signika';
+  src: url('../fonts/Signika/Signika-Bold.ttf');
+}
+
 body {
   background: black;
   color: #eee;
@@ -12,7 +17,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11pt;
   text-align: center;
-  transition: all 2s;
+  .transition(all 1s ease-out);
 }
 
 div#logo {
@@ -21,6 +26,8 @@ div#logo {
   width: 1rem;
   height: 6rem;
   border: none;
+  .transition(all 1s linear);
+
   span.logo-text {
     text-transform: lowercase;
     text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
@@ -41,7 +48,6 @@ div#content {
   top: 285px;
   width: 100%;
   text-align: center;
-  transition: all 2s;
 
   .choice {
     padding-bottom: 3rem;

@@ -26,8 +26,5 @@ class CrunkNetModule extends Module {
 }
 
 void main() {
-  Logger.root..level = Level.FINEST
-    ..onRecord.listen((LogRecord r) { print(r.message); });
-
   applicationFactory().addModule(new CrunkNetModule()).run();
 }

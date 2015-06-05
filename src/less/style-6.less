@@ -2,6 +2,13 @@
  * Copyright 2015, Crunk Biz, LLC.
  * Licensed under ISC (https://github.com/rcrunk/crunk.net/LICENSE.md)
  */
+@import "mixins/vendor.less";
+
+@font-face {
+  font-family: 'Geostar';
+  src: url('../fonts/Geostar/Geostar-Regular.ttf');
+}
+
 body {
   background: #fc0;
   color: black;
@@ -10,12 +17,12 @@ body {
   font-family: Georgia, sans-serif;
   font-size: 12pt;
   text-align: center;
-  transition: all 1s;
+  .transition(all 1s linear);
 }
 
 div#logo {
   span.logo-text {
-    font-family: 'Geostar', cursive;
+    font-family: 'Geostar', fantasy;
     font-size: 3rem;
     font-weight: bold;
     text-transform: lowercase;
@@ -32,7 +39,7 @@ div#logo {
     line-height: 150%;
     margin: .25rem auto;
     text-align: center;
-    transition: all 3s;
+    .transition(all 1s linear);
 
     .period {
       font-size: 4rem;

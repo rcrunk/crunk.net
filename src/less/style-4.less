@@ -2,6 +2,8 @@
  * Copyright 2015, Crunk Biz, LLC.
  * Licensed under ISC (https://github.com/rcrunk/crunk.net/LICENSE.md)
  */
+@import "mixins/vendor.less";
+
 body {
   background: #960;
   color: #cc3;
@@ -9,7 +11,7 @@ body {
   padding: 0;
   font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 11pt;
-  transition: all 2s;
+  .transition(all 2s ease-in-out);
 }
 
 .wrapper {
@@ -22,7 +24,7 @@ div#logo {
   text-shadow: 1px 1px 0 rgba(204,204,51,0.75), -1px -1px 0 rgba(204,204,51,0.75);
   border: none;
   float: none;
-  transition: all 2s;
+  .transition(all 1s linear);
 
   span.logo-text {
     text-transform: lowercase;
@@ -51,7 +53,6 @@ div#content {
   text-align: left;
   padding: 1em;
   border: thin ridge #cc3;
-  transition: all 2s;
 
   .container {
     width: 100%;
