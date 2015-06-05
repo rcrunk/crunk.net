@@ -31,6 +31,7 @@ and crunk.net finally received a long overdue refresh. The changes include, but 
 done now using CSS.
 * All JavaScript rewritten in Dart/Angular.
 * Google fonts.
+* Social media tags for sharing on FB, G+, Twitter, ...
 * Select favorite style page now switches styles immediately on selection of a style.
 * Use local storage instead of cookies to maintain persistent state.
 * CSS spinners appear when switching styles.
