@@ -9,11 +9,15 @@
   src: url('../fonts/Nothing_You_Could_Do/NothingYouCouldDo.ttf');
 }
 
+@background: #009;
+@color: #09f;
+@logo-text: #006;
+
 body {
-  background: #009;
-  color: #09f;
+  background: @background;
+  color: @color;
   font-family: cursive;
-  .transition(all 1s ease-out);
+  font-size: 12pt;
 }
 
 div#logo {
@@ -32,7 +36,7 @@ div#logo {
     font-style: italic;
     font-weight: bold;
     letter-spacing: 1rem;
-    color: #006;
+    color: @logo-text;
 
     @media (max-width: 624px) {
       font-size: 8rem;
@@ -51,7 +55,7 @@ div#content {
   padding: 2%;
   width: 84%;
   position: absolute;
-  border: 1px dashed #09f;
+  border: 1px dashed @color;
   border-radius: 1rem;
   text-align: center;
 
@@ -76,7 +80,7 @@ div#content {
 
     input[type="radio"]:checked+label {
       color: #fff;
-      text-shadow: -1px -1px 1px #09f;
+      text-shadow: -1px -1px 1px @color;
     }
 
     img.img-responsive {
@@ -94,8 +98,8 @@ div#content {
   }
 
   input[type="submit"] {
-    color: #09f;
-    background: #009;
+    color: @color;
+    background: @logo-text;
     box-shadow: inset -1px -1px 2px rgba(0,0,0,0.5),
                 inset  1px  1px 2px rgba(255,255,255,0.8);
     font-size: 11pt;
@@ -121,7 +125,7 @@ div#content {
 }
 
 .link {
-  color: #09f;
+  color: @color;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -135,11 +139,11 @@ div#content {
 .site-name {
   font-weight: bold;
   font-size: larger;
-  text-shadow: 1px 1px 1px #006;
+  text-shadow: 1px 1px 1px @logo-text;
 
   + .exclamation {
     font-size: large;
     font-style: italic;
-    text-shadow: 1px 1px 1px #006;
+    text-shadow: 1px 1px 1px @logo-text;
   }
 }
