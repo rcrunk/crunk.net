@@ -4,14 +4,18 @@
  */
 @import "mixins/vendor.less";
 
+@background: white;
+@color: black;
+@color2: darkred;
+
 @font-face {
   font-family: 'Bree Serif';
   src: url('../fonts/Bree_Serif/BreeSerif-Regular.ttf');
 }
 
 body {
-  background: white;
-  color: black;
+  background: @background;
+  color: @color;
   margin: 0;
   padding: 0;
   font-family: Times, serif;
@@ -39,7 +43,7 @@ div#logo {
     font-style: normal;
     font-kerning: auto;
     .period {
-      color: darkred;
+      color: @color2;
     }
   }
 }
@@ -48,7 +52,7 @@ div#content {
   margin: 0 3%;
   text-align: left;
   padding: 4px 1em 1em;
-  border-top: 1px solid black;
+  border-top: 1px solid @color;
 
   .choice {
     padding-bottom: 2rem;
@@ -72,26 +76,29 @@ div#content {
   }
 
   .row:last-child {
-    border-top: 1px solid black;
+    border-top: 1px solid @color;
     padding-top: 2rem;
   }
 
   input[type="submit"] {
-    background: transparent url("../images/style-0/button.gif") no-repeat;
-    color: black;
-    width: 87px;
-    height: 29px;
-    border: none;
+    position: relative;
+    background: @background;
+    border: 3px double @color;
+    border-radius: .5rem;
+    box-sizing: content-box;
     font-family: Times, serif;
     font-size: 12pt;
     font-weight: normal;
+    padding: 0 2rem;
+    min-width: 8rem;
 
     &:hover {
-      background: transparent url("../images/style-0/button_hover.gif") no-repeat;
+      border: 3px solid rgba(0,0,0,.75);
     }
 
     &:active {
-      color: gray;
+      color: rgba(0,0,0,.75);
+      border: 3px solid @color2;
     }
 
     &:focus {
@@ -102,7 +109,7 @@ div#content {
 
 .link {
   display: inline-block;
-  color: #333333;
+  color: #333;
   text-decoration: underline;
   cursor: pointer;
 }
