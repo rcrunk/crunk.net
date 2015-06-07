@@ -41,7 +41,19 @@
   </head>
   <body>
     <spinner state="off" animation="initial"></spinner>
-    <ng-view></ng-view>
+    <ng-view>
+      <!--[if lt IE 10 ]>
+        <div style="font-weight: bold; padding: 20px 30px; color: white; background: #09f;">
+          If you are seeing this message, your browser is unsupported.
+          Please consider upgrading to:
+          <ul style="font-weight: normal; color: #09f; background: white;">
+            <li><a href="https://www.microsoft.com/en-us/download/internet-explorer.aspx">IE 10 or above</a></li>
+            <li><a href="https://www.google.com/intl/en/chrome/browse">Chrome</a></li>
+            <li><a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a></li>
+          </ul>
+        </div>
+      <![endif]-->
+    </ng-view>
     <script type="application/dart" src="main.dart"></script>
     <script type="text/javascript" src="packages/browser/dart.js"></script>
   </body>
