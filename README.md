@@ -1,6 +1,12 @@
 crunk.net
 =========
 
+Demo
+----
+The demo is the live site: http://www.crunk.net/
+
+Description
+-----------
 Source to crunk.net
 
 This site has been around since the mid to late 90s. Originally as a vanity site, it had some jokes, book and movie
