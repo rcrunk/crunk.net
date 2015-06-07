@@ -9,9 +9,13 @@
   src: url('../fonts/Signika/Signika-Bold.ttf');
 }
 
+@background: black;
+@color: #eee;
+@logo-text-color: rgba(0,0,0,0.7);
+
 body {
-  background: black;
-  color: #eee;
+  background: @background;
+  color: @color;
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -21,17 +25,19 @@ body {
 }
 
 div#logo {
+  display: block;
   margin: 1em auto;
   top: 1em;
   width: 1rem;
-  height: 6rem;
+  letter-spacing: .5rem;
   border: none;
   .transition(all 1s linear);
 
   span.logo-text {
+    display: inline-block;
     text-transform: lowercase;
-    text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
-    color: rgba(0,0,0,0.7);
+    text-shadow: -1px -1px 1px @color, 1px 1px 1px @background;
+    color: @logo-text-color;
     word-wrap: break-word;
     width: 2.5rem;
     font-family: 'Signika', sans-serif;
@@ -44,10 +50,9 @@ div#logo {
 }
 
 div#content {
-  position: relative;
-  top: 285px;
   width: 100%;
   text-align: center;
+  padding: 0 3rem;
 
   .choice {
     padding-bottom: 3rem;
@@ -81,7 +86,7 @@ div#content {
 
   .row:last-child {
     padding: 1em 0 4em 0;
-    border-top: black groove thin;
+    border-top: @color groove thin;
   }
 
   input[type="submit"] {
