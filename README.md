@@ -28,13 +28,14 @@ found that my RoR's implementation didn't work on the latest version. At this po
 anyway), and reimplemented using JavaScript which allowed the site to be completely static.
 
 Fast forward to today (2015), CSS and client side technologies have advanced, mobile devices have become ubiquitous,
-and crunk.net finally received a long overdue refresh. The changes include, but are not limited to:
+and crunk.net finally receives a long overdue refresh. The changes include, but are not limited to:
 
 * Mobile friendly (as deemed by: https://www.google.com/webmasters/tools/mobile-friendly/?url=www.crunk.net)
 * Now a single page application.
 * Responsive (leverage Bootstrap: http://getbootstrap.com)
-* Leverage recent (and not so recent) capabilities of CSS; no longer are images for the logos, they are all
+* Leverage recent (and not so recent) capabilities of CSS; no longer use images for the logos or buttons, they are all
 done now using CSS.
+* Use LESS (http://lesscss.org/) for stylesheet authoring instead of CSS directly.
 * All JavaScript rewritten in Dart/Angular.
 * Google fonts.
 * Social media tags for sharing on FB, G+, Twitter, ...
@@ -68,6 +69,8 @@ None of the following steps require root permissions.
 
 0. Pull npm locally managed dependencies: `npm install`.
 0. Build and optimize: `gulp dist`; at the completion, the output will be in the dist folder.
+
+Other build options are documented in `gulpfile.js`.
 
 Developing
 ----------
