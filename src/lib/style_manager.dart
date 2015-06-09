@@ -88,6 +88,9 @@ class StyleManager {
         link.setAttribute("href", styleSheet);
         Spinner.off();
         Spinner.setAnimationIndex(styleIndex);
+
+        // This causes Chrome to apply the style change; don't fully understand why its needed.
+        document.dispatchEvent(new MouseEvent("mousemove"));
       }
     }
   }
